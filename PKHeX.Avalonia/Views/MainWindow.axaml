@@ -1,0 +1,85 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PKHeX.Avalonia.ViewModels"
+        xmlns:views="using:PKHeX.Avalonia.Views"
+        x:Class="PKHeX.Avalonia.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="{Binding Title}"
+        Width="800" Height="600"
+        MinWidth="600" MinHeight="400">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <DockPanel>
+        <!-- Menu Bar -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open..."
+                          Command="{Binding OpenFileCommand}"
+                          CommandParameter="{Binding $parent[Window]}"
+                          HotKey="Ctrl+O" />
+                <MenuItem Header="_Save"
+                          Command="{Binding SaveCurrentFileCommand}"
+                          IsEnabled="{Binding HasSaveFile}"
+                          HotKey="Ctrl+S" />
+                <Separator />
+                <MenuItem Header="E_xit"
+                          Click="OnExitClick" />
+            </MenuItem>
+        </Menu>
+
+        <!-- Status Bar -->
+        <Border DockPanel.Dock="Bottom"
+                Background="{DynamicResource SystemControlBackgroundChromeMediumBrush}"
+                Padding="8,4">
+            <TextBlock Text="{Binding StatusMessage}"
+                       FontSize="12" />
+        </Border>
+
+        <!-- Main Content -->
+        <Panel>
+            <!-- Empty state -->
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Spacing="12"
+                        IsVisible="{Binding !HasSaveFile}">
+                <TextBlock Text="PKHeX"
+                           FontSize="48"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Opacity="0.3" />
+                <TextBlock Text="Open a save file to get started (Ctrl+O)"
+                           FontSize="16"
+                           HorizontalAlignment="Center"
+                           Opacity="0.5" />
+            </StackPanel>
+
+            <!-- Box viewer when save is loaded -->
+            <views:BoxView DataContext="{Binding BoxViewModel}"
+                           IsVisible="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).HasSaveFile}" />
+
+            <!-- Box navigation overlay -->
+            <DockPanel VerticalAlignment="Bottom"
+                       Margin="8,0,8,36"
+                       IsVisible="{Binding HasSaveFile}">
+                <Button DockPanel.Dock="Left"
+                        Content="◀"
+                        Command="{Binding PreviousBoxCommand}"
+                        Width="40" Height="32"
+                        HorizontalContentAlignment="Center" />
+                <Button DockPanel.Dock="Right"
+                        Content="▶"
+                        Command="{Binding NextBoxCommand}"
+                        Width="40" Height="32"
+                        HorizontalContentAlignment="Center" />
+                <TextBlock Text="{Binding BoxViewModel.BoxName}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="14"
+                           FontWeight="SemiBold" />
+            </DockPanel>
+        </Panel>
+    </DockPanel>
+</Window>

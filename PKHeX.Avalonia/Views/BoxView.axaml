@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PKHeX.Avalonia.ViewModels"
+             x:Class="PKHeX.Avalonia.Views.BoxView"
+             x:DataType="vm:BoxViewModel">
+
+    <Panel>
+        <!-- Wallpaper background -->
+        <Image Source="{Binding Wallpaper}"
+               Stretch="Fill"
+               Opacity="0.4" />
+
+        <!-- Slot grid: 6 columns x 5 rows -->
+        <ItemsControl ItemsSource="{Binding Slots}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Margin="16">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel MaxWidth="432"
+                               ItemWidth="72"
+                               ItemHeight="60" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:SlotViewModel">
+                    <Border Background="Transparent"
+                            BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                            BorderThickness="1"
+                            CornerRadius="4"
+                            Margin="1"
+                            ToolTip.Tip="{Binding Summary}"
+                            Cursor="Hand">
+                        <Image Source="{Binding Sprite}"
+                               Width="68"
+                               Height="56"
+                               Stretch="None"
+                               IsVisible="{Binding !IsEmpty}" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Panel>
+</UserControl>
