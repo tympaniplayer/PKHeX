@@ -21,12 +21,17 @@ public partial class MainWindowViewModel : ObservableObject
     private BoxViewModel? _boxViewModel;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasEditor))]
+    private PokemonEditorViewModel? _editorViewModel;
+
+    [ObservableProperty]
     private string _statusMessage = "No save file loaded.";
 
     [ObservableProperty]
     private int _currentBox;
 
     public bool HasSaveFile => SaveFile is not null;
+    public bool HasEditor => EditorViewModel is not null;
 
     public string Title => SaveFile is not null
         ? $"PKHeX (Avalonia) — {SaveFile.Version} [{SaveFile.OT}]"
@@ -131,5 +136,24 @@ public partial class MainWindowViewModel : ObservableObject
     {
         if (SaveFile is null) return;
         CurrentBox = (CurrentBox - 1 + SaveFile.BoxCount) % SaveFile.BoxCount;
+    }
+
+    [RelayCommand]
+    private void SelectSlot(SlotViewModel? slot)
+    {
+        if (slot is null || SaveFile is null || slot.IsEmpty)
+            return;
+
+        EditorViewModel = new PokemonEditorViewModel(slot.Pokemon, SaveFile);
+        StatusMessage = $"Editing: {slot.Summary}";
+    }
+
+    [RelayCommand]
+    private void CloseEditor()
+    {
+        EditorViewModel = null;
+        // Refresh box to show any changes
+        if (SaveFile is not null)
+            BoxViewModel = new BoxViewModel(SaveFile, CurrentBox);
     }
 }

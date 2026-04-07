@@ -24,19 +24,23 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate x:DataType="vm:SlotViewModel">
-                    <Border Background="Transparent"
+                    <Button Background="Transparent"
                             BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
                             BorderThickness="1"
                             CornerRadius="4"
                             Margin="1"
+                            Padding="0"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
                             ToolTip.Tip="{Binding Summary}"
-                            Cursor="Hand">
+                            Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).SelectSlotCommand}"
+                            CommandParameter="{Binding}">
                         <Image Source="{Binding Sprite}"
                                Width="68"
                                Height="56"
                                Stretch="None"
                                IsVisible="{Binding !IsEmpty}" />
-                    </Border>
+                    </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

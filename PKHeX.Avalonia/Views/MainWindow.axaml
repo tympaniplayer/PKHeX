@@ -5,8 +5,8 @@
         x:Class="PKHeX.Avalonia.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Title="{Binding Title}"
-        Width="800" Height="600"
-        MinWidth="600" MinHeight="400">
+        Width="1024" Height="650"
+        MinWidth="700" MinHeight="450">
 
     <Design.DataContext>
         <vm:MainWindowViewModel />
@@ -56,30 +56,52 @@
                            Opacity="0.5" />
             </StackPanel>
 
-            <!-- Box viewer when save is loaded -->
-            <views:BoxView DataContext="{Binding BoxViewModel}"
-                           IsVisible="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).HasSaveFile}" />
+            <!-- Save file content: box viewer + optional editor -->
+            <Grid ColumnDefinitions="*,Auto"
+                  IsVisible="{Binding HasSaveFile}">
 
-            <!-- Box navigation overlay -->
-            <DockPanel VerticalAlignment="Bottom"
-                       Margin="8,0,8,36"
-                       IsVisible="{Binding HasSaveFile}">
-                <Button DockPanel.Dock="Left"
-                        Content="◀"
-                        Command="{Binding PreviousBoxCommand}"
-                        Width="40" Height="32"
-                        HorizontalContentAlignment="Center" />
-                <Button DockPanel.Dock="Right"
-                        Content="▶"
-                        Command="{Binding NextBoxCommand}"
-                        Width="40" Height="32"
-                        HorizontalContentAlignment="Center" />
-                <TextBlock Text="{Binding BoxViewModel.BoxName}"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           FontSize="14"
-                           FontWeight="SemiBold" />
-            </DockPanel>
+                <!-- Left: Box Viewer -->
+                <DockPanel Grid.Column="0">
+                    <!-- Box navigation at bottom -->
+                    <DockPanel DockPanel.Dock="Bottom" Margin="8,4">
+                        <Button DockPanel.Dock="Left"
+                                Content="◀"
+                                Command="{Binding PreviousBoxCommand}"
+                                Width="36" Height="28"
+                                HorizontalContentAlignment="Center" />
+                        <Button DockPanel.Dock="Right"
+                                Content="▶"
+                                Command="{Binding NextBoxCommand}"
+                                Width="36" Height="28"
+                                HorizontalContentAlignment="Center" />
+                        <TextBlock Text="{Binding BoxViewModel.BoxName}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   FontWeight="SemiBold" />
+                    </DockPanel>
+
+                    <!-- Box grid -->
+                    <views:BoxView DataContext="{Binding BoxViewModel}" />
+                </DockPanel>
+
+                <!-- Right: Pokemon Editor (when a slot is selected) -->
+                <Border Grid.Column="1"
+                        Width="380"
+                        IsVisible="{Binding HasEditor}"
+                        BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                        BorderThickness="1,0,0,0">
+                    <DockPanel>
+                        <Button DockPanel.Dock="Top"
+                                Content="✕ Close Editor"
+                                Command="{Binding CloseEditorCommand}"
+                                HorizontalAlignment="Right"
+                                Margin="4"
+                                Padding="8,2" />
+                        <views:PokemonEditorView DataContext="{Binding EditorViewModel}" />
+                    </DockPanel>
+                </Border>
+            </Grid>
         </Panel>
     </DockPanel>
 </Window>
