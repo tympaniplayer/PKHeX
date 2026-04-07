@@ -31,6 +31,16 @@
                 <MenuItem Header="_Trainer Info" Command="{Binding OpenTrainerEditorCommand}" />
                 <MenuItem Header="_Inventory" Command="{Binding OpenInventoryCommand}" />
                 <MenuItem Header="_Mystery Gifts" Command="{Binding OpenMysteryGiftsCommand}" />
+                <Separator />
+                <MenuItem Header="_Search Pokemon" Command="{Binding OpenSearchCommand}" HotKey="Ctrl+F" />
+            </MenuItem>
+            <MenuItem Header="_PKM" IsEnabled="{Binding HasEditor}">
+                <MenuItem Header="_Export..."
+                          Command="{Binding ExportSlotCommand}"
+                          CommandParameter="{Binding $parent[Window]}" />
+                <MenuItem Header="_Import..."
+                          Command="{Binding ImportSlotCommand}"
+                          CommandParameter="{Binding $parent[Window]}" />
             </MenuItem>
         </Menu>
 

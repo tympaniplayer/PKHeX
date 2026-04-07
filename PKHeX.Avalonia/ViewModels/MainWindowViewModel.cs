@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PKHeX.Avalonia.Services;
 using PKHeX.Core;
 using PKHeX.Drawing.PokeSprite;
 
@@ -34,6 +35,8 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty] private TrainerEditorViewModel? _trainerEditor;
     [ObservableProperty] private InventoryViewModel? _inventoryEditor;
     [ObservableProperty] private MysteryGiftViewModel? _mysteryGiftEditor;
+    [ObservableProperty] private SearchViewModel? _searchEditor;
+    [ObservableProperty] private SettingsViewModel _settings = new();
 
     public bool HasSaveFile => SaveFile is not null;
     public bool HasEditor => EditorViewModel is not null;
@@ -211,12 +214,119 @@ public partial class MainWindowViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private void OpenSearch()
+    {
+        if (SaveFile is null) return;
+        EditorViewModel = null;
+        SearchEditor = new SearchViewModel(SaveFile);
+        ActiveSubEditor = "Search";
+        StatusMessage = "Search across all boxes...";
+    }
+
+    [RelayCommand]
     private void CloseSubEditor()
     {
         ActiveSubEditor = null;
         TrainerEditor = null;
         InventoryEditor = null;
         MysteryGiftEditor = null;
+        SearchEditor = null;
         StatusMessage = HasSaveFile ? "Ready." : "No save file loaded.";
+    }
+
+    // ===== Slot Context Menu Commands =====
+
+    [RelayCommand]
+    private void CopySlot(SlotViewModel? slot)
+    {
+        if (slot is null || slot.IsEmpty) return;
+        SlotService.CopySlot(slot.Pokemon);
+        StatusMessage = $"Copied {slot.Summary} to clipboard.";
+    }
+
+    [RelayCommand]
+    private void PasteSlot(SlotViewModel? slot)
+    {
+        if (slot is null || SaveFile is null || !SlotService.HasClipboard) return;
+        var pk = SlotService.PasteSlot();
+        if (pk is null) return;
+
+        // Convert if needed
+        if (pk.GetType() != SaveFile.PKMType)
+        {
+            var converted = EntityConverter.ConvertToType(pk, SaveFile.PKMType, out _);
+            if (converted is null) { StatusMessage = "Conversion failed."; return; }
+            pk = converted;
+        }
+
+        SlotService.SetSlot(SaveFile, pk, CurrentBox, slot.Pokemon.Species == 0 ? FindSlotIndex(slot) : FindSlotIndex(slot));
+        BoxViewModel = new BoxViewModel(SaveFile, CurrentBox);
+        StatusMessage = "Pasted from clipboard.";
+    }
+
+    [RelayCommand]
+    private void DeleteSlot(SlotViewModel? slot)
+    {
+        if (slot is null || slot.IsEmpty || SaveFile is null) return;
+        var index = FindSlotIndex(slot);
+        if (index < 0) return;
+        SlotService.DeleteSlot(SaveFile, CurrentBox, index);
+        BoxViewModel = new BoxViewModel(SaveFile, CurrentBox);
+        StatusMessage = $"Deleted {slot.Summary}.";
+    }
+
+    private int FindSlotIndex(SlotViewModel slot)
+    {
+        if (BoxViewModel is null) return -1;
+        for (int i = 0; i < BoxViewModel.Slots.Count; i++)
+        {
+            if (ReferenceEquals(BoxViewModel.Slots[i], slot))
+                return i;
+        }
+        return -1;
+    }
+
+    [RelayCommand]
+    private async Task ExportSlotAsync(Window window)
+    {
+        if (EditorViewModel is null || SaveFile is null) return;
+        var pk = EditorViewModel.Entity;
+
+        var storage = window.StorageProvider;
+        var file = await storage.SaveFilePickerAsync(new FilePickerSaveOptions
+        {
+            Title = "Export PKM",
+            SuggestedFileName = $"{pk.Species:000} - {pk.Nickname}.{pk.Extension}",
+        });
+
+        if (file is null) return;
+        var path = file.TryGetLocalPath();
+        if (path is null) return;
+
+        SlotService.ExportPKM(pk, path);
+        StatusMessage = $"Exported to {System.IO.Path.GetFileName(path)}";
+    }
+
+    [RelayCommand]
+    private async Task ImportSlotAsync(Window window)
+    {
+        if (SaveFile is null) return;
+
+        var storage = window.StorageProvider;
+        var files = await storage.OpenFilePickerAsync(new FilePickerOpenOptions
+        {
+            Title = "Import PKM",
+            AllowMultiple = false,
+        });
+
+        if (files.Count == 0) return;
+        var path = files[0].TryGetLocalPath();
+        if (path is null) return;
+
+        var pk = SlotService.ImportPKM(path, SaveFile);
+        if (pk is null) { StatusMessage = "Failed to import PKM."; return; }
+
+        EditorViewModel = new PokemonEditorViewModel(pk, SaveFile);
+        StatusMessage = $"Imported {pk.Nickname}. Click Apply to save to slot.";
     }
 }
