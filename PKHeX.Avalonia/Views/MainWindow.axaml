@@ -25,8 +25,12 @@
                           IsEnabled="{Binding HasSaveFile}"
                           HotKey="Ctrl+S" />
                 <Separator />
-                <MenuItem Header="E_xit"
-                          Click="OnExitClick" />
+                <MenuItem Header="E_xit" Click="OnExitClick" />
+            </MenuItem>
+            <MenuItem Header="_Tools" IsEnabled="{Binding HasSaveFile}">
+                <MenuItem Header="_Trainer Info" Command="{Binding OpenTrainerEditorCommand}" />
+                <MenuItem Header="_Inventory" Command="{Binding OpenInventoryCommand}" />
+                <MenuItem Header="_Mystery Gifts" Command="{Binding OpenMysteryGiftsCommand}" />
             </MenuItem>
         </Menu>
 
@@ -34,8 +38,7 @@
         <Border DockPanel.Dock="Bottom"
                 Background="{DynamicResource SystemControlBackgroundChromeMediumBrush}"
                 Padding="8,4">
-            <TextBlock Text="{Binding StatusMessage}"
-                       FontSize="12" />
+            <TextBlock Text="{Binding StatusMessage}" FontSize="12" />
         </Border>
 
         <!-- Main Content -->
@@ -45,59 +48,69 @@
                         VerticalAlignment="Center"
                         Spacing="12"
                         IsVisible="{Binding !HasSaveFile}">
-                <TextBlock Text="PKHeX"
-                           FontSize="48"
-                           FontWeight="Bold"
-                           HorizontalAlignment="Center"
-                           Opacity="0.3" />
+                <TextBlock Text="PKHeX" FontSize="48" FontWeight="Bold"
+                           HorizontalAlignment="Center" Opacity="0.3" />
                 <TextBlock Text="Open a save file to get started (Ctrl+O)"
-                           FontSize="16"
-                           HorizontalAlignment="Center"
-                           Opacity="0.5" />
+                           FontSize="16" HorizontalAlignment="Center" Opacity="0.5" />
             </StackPanel>
 
-            <!-- Save file content: box viewer + optional editor -->
+            <!-- Save file content -->
             <Grid ColumnDefinitions="*,Auto"
                   IsVisible="{Binding HasSaveFile}">
 
-                <!-- Left: Box Viewer -->
-                <DockPanel Grid.Column="0">
-                    <!-- Box navigation at bottom -->
-                    <DockPanel DockPanel.Dock="Bottom" Margin="8,4">
-                        <Button DockPanel.Dock="Left"
-                                Content="◀"
-                                Command="{Binding PreviousBoxCommand}"
-                                Width="36" Height="28"
-                                HorizontalContentAlignment="Center" />
-                        <Button DockPanel.Dock="Right"
-                                Content="▶"
-                                Command="{Binding NextBoxCommand}"
-                                Width="36" Height="28"
-                                HorizontalContentAlignment="Center" />
-                        <TextBlock Text="{Binding BoxViewModel.BoxName}"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   FontSize="14"
-                                   FontWeight="SemiBold" />
+                <!-- Left: Box + Party or Sub-editor -->
+                <Panel Grid.Column="0">
+                    <!-- Normal view: Box + Party -->
+                    <DockPanel IsVisible="{Binding !IsSubEditorOpen}">
+                        <!-- Party on the right side of the box -->
+                        <views:PartyView DockPanel.Dock="Right"
+                                         DataContext="{Binding PartyViewModel}"
+                                         Width="200" />
+
+                        <!-- Box navigation at bottom -->
+                        <DockPanel DockPanel.Dock="Bottom" Margin="8,4">
+                            <Button DockPanel.Dock="Left" Content="◀"
+                                    Command="{Binding PreviousBoxCommand}"
+                                    Width="36" Height="28" HorizontalContentAlignment="Center" />
+                            <Button DockPanel.Dock="Right" Content="▶"
+                                    Command="{Binding NextBoxCommand}"
+                                    Width="36" Height="28" HorizontalContentAlignment="Center" />
+                            <TextBlock Text="{Binding BoxViewModel.BoxName}"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       FontSize="14" FontWeight="SemiBold" />
+                        </DockPanel>
+
+                        <!-- Box grid -->
+                        <views:BoxView DataContext="{Binding BoxViewModel}" />
                     </DockPanel>
 
-                    <!-- Box grid -->
-                    <views:BoxView DataContext="{Binding BoxViewModel}" />
-                </DockPanel>
+                    <!-- Sub-editor overlay (replaces box when open) -->
+                    <DockPanel IsVisible="{Binding IsSubEditorOpen}">
+                        <Button DockPanel.Dock="Top" Content="← Back to Box View"
+                                Command="{Binding CloseSubEditorCommand}"
+                                HorizontalAlignment="Left" Margin="8,4" Padding="8,4" />
 
-                <!-- Right: Pokemon Editor (when a slot is selected) -->
-                <Border Grid.Column="1"
-                        Width="380"
+                        <!-- Trainer Editor -->
+                        <views:TrainerEditorView DataContext="{Binding TrainerEditor}"
+                                                  IsVisible="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).ActiveSubEditor, Converter={x:Static StringConverters.IsNotNullOrEmpty}, FallbackValue=False}" />
+                    </DockPanel>
+
+                    <!-- Inventory sub-editor -->
+                    <DockPanel IsVisible="{Binding ActiveSubEditor, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                        <views:InventoryView DataContext="{Binding InventoryEditor}"
+                                              IsVisible="{Binding ActiveSubEditor, FallbackValue=False}" />
+                    </DockPanel>
+                </Panel>
+
+                <!-- Right: Pokemon Editor panel -->
+                <Border Grid.Column="1" Width="380"
                         IsVisible="{Binding HasEditor}"
                         BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
                         BorderThickness="1,0,0,0">
                     <DockPanel>
-                        <Button DockPanel.Dock="Top"
-                                Content="✕ Close Editor"
+                        <Button DockPanel.Dock="Top" Content="✕ Close Editor"
                                 Command="{Binding CloseEditorCommand}"
-                                HorizontalAlignment="Right"
-                                Margin="4"
-                                Padding="8,2" />
+                                HorizontalAlignment="Right" Margin="4" Padding="8,2" />
                         <views:PokemonEditorView DataContext="{Binding EditorViewModel}" />
                     </DockPanel>
                 </Border>

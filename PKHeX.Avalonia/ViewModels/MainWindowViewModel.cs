@@ -1,5 +1,4 @@
 using System;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
@@ -17,21 +16,28 @@ public partial class MainWindowViewModel : ObservableObject
     [NotifyPropertyChangedFor(nameof(Title))]
     private SaveFile? _saveFile;
 
-    [ObservableProperty]
-    private BoxViewModel? _boxViewModel;
+    [ObservableProperty] private BoxViewModel? _boxViewModel;
+    [ObservableProperty] private PartyViewModel? _partyViewModel;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HasEditor))]
     private PokemonEditorViewModel? _editorViewModel;
 
-    [ObservableProperty]
-    private string _statusMessage = "No save file loaded.";
+    [ObservableProperty] private string _statusMessage = "No save file loaded.";
+    [ObservableProperty] private int _currentBox;
 
+    // Active sub-editor panel (shown in center content area)
     [ObservableProperty]
-    private int _currentBox;
+    [NotifyPropertyChangedFor(nameof(IsSubEditorOpen))]
+    private string? _activeSubEditor;
+
+    [ObservableProperty] private TrainerEditorViewModel? _trainerEditor;
+    [ObservableProperty] private InventoryViewModel? _inventoryEditor;
+    [ObservableProperty] private MysteryGiftViewModel? _mysteryGiftEditor;
 
     public bool HasSaveFile => SaveFile is not null;
     public bool HasEditor => EditorViewModel is not null;
+    public bool IsSubEditorOpen => ActiveSubEditor is not null;
 
     public string Title => SaveFile is not null
         ? $"PKHeX (Avalonia) — {SaveFile.Version} [{SaveFile.OT}]"
@@ -42,6 +48,9 @@ public partial class MainWindowViewModel : ObservableObject
         if (value is null)
         {
             BoxViewModel = null;
+            PartyViewModel = null;
+            EditorViewModel = null;
+            ActiveSubEditor = null;
             StatusMessage = "No save file loaded.";
             return;
         }
@@ -49,6 +58,9 @@ public partial class MainWindowViewModel : ObservableObject
         SpriteUtil.Initialize(value);
         CurrentBox = 0;
         BoxViewModel = new BoxViewModel(value, CurrentBox);
+        PartyViewModel = new PartyViewModel(value);
+        EditorViewModel = null;
+        ActiveSubEditor = null;
         StatusMessage = $"Loaded {value.Version} — {value.OT} ({value.GetType().Name})";
     }
 
@@ -57,6 +69,8 @@ public partial class MainWindowViewModel : ObservableObject
         if (SaveFile is not null)
             BoxViewModel = new BoxViewModel(SaveFile, value);
     }
+
+    // ===== File Commands =====
 
     [RelayCommand]
     private async Task OpenFileAsync(Window window)
@@ -124,6 +138,8 @@ public partial class MainWindowViewModel : ObservableObject
         }
     }
 
+    // ===== Box Navigation =====
+
     [RelayCommand]
     private void NextBox()
     {
@@ -138,12 +154,15 @@ public partial class MainWindowViewModel : ObservableObject
         CurrentBox = (CurrentBox - 1 + SaveFile.BoxCount) % SaveFile.BoxCount;
     }
 
+    // ===== Pokemon Editor =====
+
     [RelayCommand]
     private void SelectSlot(SlotViewModel? slot)
     {
         if (slot is null || SaveFile is null || slot.IsEmpty)
             return;
 
+        ActiveSubEditor = null;
         EditorViewModel = new PokemonEditorViewModel(slot.Pokemon, SaveFile);
         StatusMessage = $"Editing: {slot.Summary}";
     }
@@ -152,8 +171,52 @@ public partial class MainWindowViewModel : ObservableObject
     private void CloseEditor()
     {
         EditorViewModel = null;
-        // Refresh box to show any changes
         if (SaveFile is not null)
+        {
             BoxViewModel = new BoxViewModel(SaveFile, CurrentBox);
+            PartyViewModel = new PartyViewModel(SaveFile);
+        }
+    }
+
+    // ===== Sub-Editor Navigation =====
+
+    [RelayCommand]
+    private void OpenTrainerEditor()
+    {
+        if (SaveFile is null) return;
+        EditorViewModel = null;
+        TrainerEditor = new TrainerEditorViewModel(SaveFile);
+        ActiveSubEditor = "Trainer";
+        StatusMessage = "Editing trainer info...";
+    }
+
+    [RelayCommand]
+    private void OpenInventory()
+    {
+        if (SaveFile is null) return;
+        EditorViewModel = null;
+        InventoryEditor = new InventoryViewModel(SaveFile);
+        ActiveSubEditor = "Inventory";
+        StatusMessage = "Viewing inventory...";
+    }
+
+    [RelayCommand]
+    private void OpenMysteryGifts()
+    {
+        if (SaveFile is null) return;
+        EditorViewModel = null;
+        MysteryGiftEditor = new MysteryGiftViewModel(SaveFile);
+        ActiveSubEditor = "MysteryGifts";
+        StatusMessage = "Viewing mystery gifts...";
+    }
+
+    [RelayCommand]
+    private void CloseSubEditor()
+    {
+        ActiveSubEditor = null;
+        TrainerEditor = null;
+        InventoryEditor = null;
+        MysteryGiftEditor = null;
+        StatusMessage = HasSaveFile ? "Ready." : "No save file loaded.";
     }
 }

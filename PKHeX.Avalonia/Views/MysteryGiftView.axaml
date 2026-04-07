@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PKHeX.Avalonia.ViewModels"
+             x:Class="PKHeX.Avalonia.Views.MysteryGiftView"
+             x:DataType="vm:MysteryGiftViewModel">
+
+    <DockPanel Margin="8">
+        <TextBlock DockPanel.Dock="Top" Text="Mystery Gifts" FontSize="20" FontWeight="Bold" Margin="4,4,4,8" />
+
+        <TextBlock DockPanel.Dock="Top"
+                   Text="Mystery Gifts are not supported for this save type."
+                   IsVisible="{Binding !IsSupported}"
+                   Opacity="0.5" FontStyle="Italic" Margin="4" />
+
+        <ItemsControl ItemsSource="{Binding Gifts}" IsVisible="{Binding IsSupported}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:MysteryGiftEntryViewModel">
+                    <Border Padding="4" Margin="2" CornerRadius="4" Width="160"
+                            Background="{DynamicResource SystemControlBackgroundChromeMediumBrush}"
+                            Opacity="{Binding IsUsed, Converter={x:Static BoolConverters.Not}}"
+                            IsVisible="{Binding !IsEmpty}">
+                        <DockPanel>
+                            <Image Source="{Binding Sprite}" Width="48" Height="40"
+                                   Stretch="Uniform" DockPanel.Dock="Left" Margin="0,0,6,0" />
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Title}" FontSize="11" TextTrimming="CharacterEllipsis" />
+                                <TextBlock Text="Used" FontSize="10" Foreground="Gray"
+                                           IsVisible="{Binding IsUsed}" />
+                            </StackPanel>
+                        </DockPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DockPanel>
+</UserControl>

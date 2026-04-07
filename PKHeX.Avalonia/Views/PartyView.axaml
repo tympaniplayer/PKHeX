@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PKHeX.Avalonia.ViewModels"
+             x:Class="PKHeX.Avalonia.Views.PartyView"
+             x:DataType="vm:PartyViewModel">
+
+    <StackPanel Spacing="4" Margin="8">
+        <TextBlock Text="Party" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,4" />
+
+        <ItemsControl ItemsSource="{Binding Slots}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:PartySlotViewModel">
+                    <Border Padding="4,2"
+                            Margin="0,1"
+                            CornerRadius="4"
+                            Background="{DynamicResource SystemControlBackgroundChromeMediumBrush}"
+                            IsVisible="{Binding !IsEmpty}"
+                            ToolTip.Tip="{Binding Summary}">
+                        <DockPanel>
+                            <Image Source="{Binding Sprite}" Width="40" Height="33"
+                                   Stretch="Uniform" DockPanel.Dock="Left" Margin="0,0,6,0" />
+                            <StackPanel VerticalAlignment="Center" DockPanel.Dock="Left">
+                                <TextBlock Text="{Binding Summary}" FontSize="12" FontWeight="SemiBold" />
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock FontSize="11" Opacity="0.7">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="HP: {0}/{1}">
+                                                <Binding Path="CurrentHP" />
+                                                <Binding Path="MaxHP" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding StatusText}" FontSize="11"
+                                               Foreground="OrangeRed"
+                                               IsVisible="{Binding StatusText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DockPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>
