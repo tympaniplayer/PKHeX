@@ -31,6 +31,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="3.119.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PKHeX.Core\PKHeX.Core.csproj" />
     <ProjectReference Include="..\PKHeX.Drawing.Misc\PKHeX.Drawing.Misc.csproj" />
     <ProjectReference Include="..\PKHeX.Drawing.PokeSprite\PKHeX.Drawing.PokeSprite.csproj" />

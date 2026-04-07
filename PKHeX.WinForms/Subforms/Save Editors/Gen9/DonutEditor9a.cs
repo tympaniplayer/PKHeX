@@ -57,7 +57,7 @@ public sealed partial class DonutEditor9a : UserControl
                     pb.Image = null;
                     return;
                 }
-                pb.Image = SpriteUtil.GetItemSpriteA(itemID);
+                pb.Image = SpriteUtil.GetItemSpriteA(itemID).ToBitmap();
             };
         }
 
@@ -265,7 +265,7 @@ public sealed partial class DonutEditor9a : UserControl
         {
             Image? img;
             if (flavors[i] != 0 && DonutInfo.TryGetFlavorName(flavors[i], out var name))
-                img = DonutSpriteUtil.GetDonutFlavorImage(name);
+                img = DonutSpriteUtil.GetDonutFlavorImage(name).ToImage();
             else
                 img = null;
             FlavorIcons[i].Image = img;
@@ -274,7 +274,7 @@ public sealed partial class DonutEditor9a : UserControl
 
     private void LoadDonutStarCount(byte count)
     {
-        var star = DonutSpriteUtil.StarSprite;
+        var star = DonutSpriteUtil.StarSprite.ToImage();
         for (int i = 0; i < Stars.Length; i++)
             Stars[i].Image = i < count ? star : null;
     }
@@ -282,7 +282,7 @@ public sealed partial class DonutEditor9a : UserControl
     private void CB_Donut_SelectedIndexChanged(object? sender, EventArgs e)
     {
         _donut.Donut = (ushort)CB_Donut.SelectedIndex;
-        PB_Donut.Image = _donut.Sprite();
+        PB_Donut.Image = _donut.Sprite().ToBitmap();
     }
 
     private void CB_Flavor_SelectedIndexChanged(object? sender, EventArgs e)
@@ -293,7 +293,7 @@ public sealed partial class DonutEditor9a : UserControl
         if (index < 0)
             return;
         var text = cb.SelectedIndex > 0 ? cb.SelectedValue?.ToString() : null;
-        FlavorIcons[index].Image = text is null ? null : DonutSpriteUtil.GetDonutFlavorImage(text);
+        FlavorIcons[index].Image = text is null ? null : DonutSpriteUtil.GetDonutFlavorImage(text).ToImage();
     }
 
     public void Reset()

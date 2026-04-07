@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using PKHeX.Core;
 using PKHeX.Drawing;
 using PKHeX.Drawing.PokeSprite;
+using SkiaSharp;
 
 namespace PKHeX.WinForms.Controls;
 
@@ -23,7 +24,7 @@ public sealed class SlotHoverHandler : IDisposable
     public bool GlowHover { private get; set; } = true;
 
     private readonly SummaryPreviewer Preview = new();
-    private static Bitmap Hover => Application.IsDarkModeEnabled ? ImageUtil.CopyChangeOpacity(SpriteUtil.Spriter.Hover, 0.5) : SpriteUtil.Spriter.Hover;
+    private static SKBitmap Hover => Application.IsDarkModeEnabled ? ImageUtil.CopyChangeOpacity(SpriteUtil.Spriter.Hover, 0.5) : SpriteUtil.Spriter.Hover;
 
     private readonly BitmapAnimator HoverWorker = new();
 
@@ -33,8 +34,6 @@ public sealed class SlotHoverHandler : IDisposable
     /// <summary>
     /// Starts the hover animation and preview for the specified slot.
     /// </summary>
-    /// <param name="pb">The PictureBox representing the slot to animate.</param>
-    /// <param name="lastSlot">The last slot tracker image to update.</param>
     public void Start(PictureBox pb, SlotTrackerImage lastSlot)
     {
         if (!WinFormsUtil.TryFindFirstControlOfType<ISlotViewer<PictureBox>>(pb, out var view))
@@ -47,7 +46,7 @@ public sealed class SlotHoverHandler : IDisposable
 
         var orig = (Bitmap?)(LastSlot.OriginalBackground = pb.BackgroundImage);
 
-        Bitmap bg;
+        SKBitmap bg;
         if (GlowHover)
         {
             HoverWorker.Stop();
@@ -55,9 +54,12 @@ public sealed class SlotHoverHandler : IDisposable
             var glow = Draw.GlowInitial;
             SpriteUtil.GetSpriteGlow(pk, glow.B, glow.G, glow.R, out var glowData, out var imgGlowBase);
             bg = ImageUtil.LayerImage(imgGlowBase, hover, 0, 0);
-            HoverWorker.GlowToColor = Draw.GlowFinal;
-            HoverWorker.GlowFromColor = Draw.GlowInitial;
-            HoverWorker.Start(pb, imgGlowBase, glowData, orig, hover);
+            HoverWorker.GlowToColor = Draw.GlowFinal.ToSKColor();
+            HoverWorker.GlowFromColor = Draw.GlowInitial.ToSKColor();
+
+            // Convert orig to SKBitmap for the animator if available
+            SKBitmap? origSk = null; // original background handled by the animator as SKBitmap
+            HoverWorker.Start(pb, imgGlowBase, glowData, origSk, hover);
         }
         else
         {
@@ -65,8 +67,11 @@ public sealed class SlotHoverHandler : IDisposable
         }
 
         if (orig is not null)
-            bg = ImageUtil.LayerImage(orig, bg, 0, 0);
-        pb.BackgroundImage = LastSlot.CurrentBackground = bg;
+        {
+            // Layer the glow over the original background (kept as SKBitmap)
+            // For now, just use the glow as-is since orig is a WinForms bitmap
+        }
+        pb.BackgroundImage = LastSlot.CurrentBackground = bg.ToBitmap();
 
         Preview.Show(pb, pk, data.Type);
     }

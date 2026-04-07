@@ -250,7 +250,7 @@ public partial class BoxEditor : UserControl, ISlotViewer<PictureBox>
     {
         Editor.Reload();
         int box = CurrentBox;
-        BoxPokeGrid.SetBackground(SAV.WallpaperImage(box));
+        BoxPokeGrid.SetBackground(SAV.WallpaperImage(box).ToBitmap());
         M?.Hover.Stop();
 
         int index = box * SAV.BoxSlotCount;

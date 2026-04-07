@@ -573,7 +573,7 @@ public static class WinFormsUtil
         }
     }
 
-    public static Bitmap BlackToWhite(Bitmap bmp) => Drawing.ImageUtil.CopyChangeAllColorTo(bmp, Color.White);
+    public static Bitmap BlackToWhite(Bitmap bmp) => Drawing.ImageUtil.CopyChangeAllColorTo(bmp.ToSKBitmap(), SkiaSharp.SKColors.White).ToBitmap();
 
     // SystemColor equivalents for dark mode support
     public static Color ColorWarn => Application.IsDarkModeEnabled ? Color.OrangeRed : Color.Red;

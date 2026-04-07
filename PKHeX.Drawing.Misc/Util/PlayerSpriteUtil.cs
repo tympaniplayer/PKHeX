@@ -1,4 +1,4 @@
-using System.Drawing;
+using SkiaSharp;
 using PKHeX.Core;
 using PKHeX.Drawing.Misc.Properties;
 
@@ -12,17 +12,18 @@ public static class PlayerSpriteUtil
     /// <summary>
     /// Gets the player sprite image for the specified <see cref="SaveFile"/>.
     /// </summary>
-    /// <param name="sav">The save file to get the player sprite for.</param>
-    /// <returns>A <see cref="Bitmap"/> representing the player sprite, or null if not available.</returns>
-    public static Bitmap? Sprite(this SaveFile sav) => GetSprite(sav);
+    public static SKBitmap? Sprite(this SaveFile sav) => GetSprite(sav);
 
-    private static Bitmap? GetSprite(SaveFile sav)
+    private static SKBitmap? GetSprite(SaveFile sav)
     {
         if (sav is IMultiplayerSprite ms)
         {
             // Gen6 only
             string file = $"tr_{ms.MultiplayerSpriteID:00}";
-            return Resources.ResourceManager.GetObject(file) as Bitmap ?? Resources.tr_00;
+            var obj = Resources.ResourceManager.GetObject(file);
+            if (obj is byte[] bytes)
+                return SKBitmap.Decode(bytes);
+            return Resources.tr_00;
         }
         return null;
     }

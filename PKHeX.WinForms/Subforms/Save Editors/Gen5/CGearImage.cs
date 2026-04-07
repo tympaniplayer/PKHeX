@@ -21,7 +21,7 @@ public static class CGearImage
     public static Bitmap GetBitmap(CGearBackground bg)
     {
         var data = bg.GetImageData();
-        return ImageUtil.GetBitmap(data, Width, Height);
+        return ImageUtil.GetBitmap(data, Width, Height).ToBitmap();
     }
 
     /// <summary>

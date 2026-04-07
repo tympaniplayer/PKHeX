@@ -1,6 +1,6 @@
 using System;
 using System.Drawing;
-using System.Drawing.Imaging;
+
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -72,7 +72,7 @@ public partial class SAV_Trainer9 : Form
             var width = blocks.GetBlockValue<uint>(kw);
             var height = blocks.GetBlockValue<uint>(kh);
             var result = DXT1.Decompress(data, (int)width, (int)height);
-            return ImageUtil.GetBitmap(result, (int)width, (int)height, PixelFormat.Format32bppArgb);
+            return ImageUtil.GetBitmap(result, (int)width, (int)height).ToBitmap();
         }
 
         var blocks = SAV.Blocks;

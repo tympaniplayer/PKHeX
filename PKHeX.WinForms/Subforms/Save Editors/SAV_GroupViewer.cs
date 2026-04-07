@@ -137,10 +137,10 @@ public sealed partial class SAV_GroupViewer : Form
 
         var sav = SAV;
         for (int i = 0; i < slots.Length; i++)
-            Box.Entries[i].Image = slots[i].Sprite(sav, visibility: GetFlags(slots[i]), storage: type);
+            Box.Entries[i].Image = slots[i].Sprite(sav, visibility: GetFlags(slots[i]), storage: type).ToBitmap();
 
         if (slotSelected != -1 && (uint)slotSelected < Box.Entries.Count)
-            Box.Entries[slotSelected].BackgroundImage = groupSelected != index ? null : SpriteUtil.Spriter.View;
+            Box.Entries[slotSelected].BackgroundImage = groupSelected != index ? null : SpriteUtil.Spriter.View.ToBitmap();
 
         CurrentGroup = index;
     }
@@ -184,7 +184,7 @@ public sealed partial class SAV_GroupViewer : Form
 
         groupSelected = CurrentGroup;
         slotSelected = index;
-        Box.Entries[index].BackgroundImage = SpriteUtil.Spriter.View;
+        Box.Entries[index].BackgroundImage = SpriteUtil.Spriter.View.ToBitmap();
     }
 
     private void B_BoxRight_Click(object sender, EventArgs e) => CB_BoxSelect.SelectedIndex = MoveRight((ModifierKeys & Keys.Control) != 0);

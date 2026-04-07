@@ -60,7 +60,7 @@ public partial class TechRecordEditor : Form
                 cells[ColumnName].Style.BackColor = WinFormsUtil.ColorAccept;
 
             cells[ColumnIndex].Value = (i+ baseRecordIndex).ToString("000");
-            cells[ColumnTypeIcon].Value = TypeSpriteUtil.GetTypeSpriteIconSmall(type);
+            cells[ColumnTypeIcon].Value = TypeSpriteUtil.GetTypeSpriteIconSmall(type).ToImage();
             cells[ColumnType].Value = type.ToString("00") + (isValid ? 0 : 1) + names[move]; // type -> valid -> name sorting
             cells[ColumnName].Value = names[move];
         }

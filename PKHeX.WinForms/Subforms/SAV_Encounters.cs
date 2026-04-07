@@ -236,7 +236,7 @@ public partial class SAV_Encounters : Form
         pk.RefreshChecksum();
         PKME_Tabs.PopulateFields(pk, false);
         slotSelected = index;
-        slotColor = SpriteUtil.Spriter.View;
+        slotColor = SpriteUtil.Spriter.View.ToBitmap();
         FillPKXBoxes(SCR_Box.Value);
     }
 
@@ -534,7 +534,7 @@ public partial class SAV_Encounters : Form
         {
             var pb = boxes[i];
             var enc = Results[i + begin];
-            pb.Image = enc.Sprite();
+            pb.Image = enc.Sprite().ToBitmap();
         }
 
         // Clear empty slots
@@ -543,11 +543,11 @@ public partial class SAV_Encounters : Form
 
         // Reset backgrounds for all
         for (int i = 0; i < RES_MAX; i++)
-            boxes[i].BackgroundImage = SpriteUtil.Spriter.Transparent;
+            boxes[i].BackgroundImage = SpriteUtil.Spriter.Transparent.ToBitmap();
 
         // Reload last viewed index's background if still within view
         if (slotSelected != -1 && slotSelected >= begin && slotSelected < begin + RES_MAX)
-            boxes[slotSelected - begin].BackgroundImage = slotColor ?? SpriteUtil.Spriter.View;
+            boxes[slotSelected - begin].BackgroundImage = slotColor ?? SpriteUtil.Spriter.View.ToBitmap();
     }
 
     private void Menu_Exit_Click(object sender, EventArgs e) => Close();

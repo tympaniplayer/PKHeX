@@ -1,4 +1,4 @@
-using System.Drawing;
+using SkiaSharp;
 using PKHeX.Core;
 
 namespace PKHeX.Drawing.PokeSprite;
@@ -8,23 +8,23 @@ namespace PKHeX.Drawing.PokeSprite;
 /// </summary>
 public static class StatusColor
 {
-    public static Color Sleep => Color.FromArgb(200, 200, 200);
-    public static Color Freeze => Color.FromArgb(0, 255, 255);
-    public static Color Paralysis => Color.FromArgb(255, 255, 0);
-    public static Color Burn => Color.FromArgb(255, 0, 0);
-    public static Color Poison => Color.FromArgb(128, 0, 255);
-    public static Color PoisonBad => Color.FromArgb(200, 0, 255);
-    public static Color None => Color.FromArgb(255, 255, 255, 255); // Transparent
+    public static SKColor Sleep => new(200, 200, 200);
+    public static SKColor Freeze => new(0, 255, 255);
+    public static SKColor Paralysis => new(255, 255, 0);
+    public static SKColor Burn => new(255, 0, 0);
+    public static SKColor Poison => new(128, 0, 255);
+    public static SKColor PoisonBad => new(200, 0, 255);
+    public static SKColor None => new(255, 255, 255, 255); // White / Transparent
 
     /// <summary>
     /// Gets the color of a <see cref="StatusCondition"/>.
     /// </summary>
     /// <param name="value">Status to get the color of.</param>
     /// <returns>Color of the status.</returns>
-    public static Color GetStatusColor(int value) => ((StatusCondition)value).GetStatusColor();
+    public static SKColor GetStatusColor(int value) => ((StatusCondition)value).GetStatusColor();
 
     /// <inheritdoc cref="GetStatusColor(int)"/>
-    public static Color GetStatusColor(this StatusType value) => value switch
+    public static SKColor GetStatusColor(this StatusType value) => value switch
     {
         StatusType.None => None,
         StatusType.Sleep => Sleep,
@@ -36,10 +36,10 @@ public static class StatusColor
     };
 
     /// <inheritdoc cref="GetStatusColor(int)"/>
-    public static Color GetStatusColor(this PKM pk) => ((StatusCondition)pk.Status_Condition).GetStatusColor();
+    public static SKColor GetStatusColor(this PKM pk) => ((StatusCondition)pk.Status_Condition).GetStatusColor();
 
     /// <inheritdoc cref="GetStatusColor(int)"/>
-    public static Color GetStatusColor(this StatusCondition value)
+    public static SKColor GetStatusColor(this StatusCondition value)
     {
         if (value == StatusCondition.None)
             return None;

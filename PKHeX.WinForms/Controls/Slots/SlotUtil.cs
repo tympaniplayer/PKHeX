@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using PKHeX.Core;
 using PKHeX.Drawing.PokeSprite;
+using PKHeX.WinForms;
 
 namespace PKHeX.WinForms.Controls;
 
@@ -17,10 +18,10 @@ public static class SlotUtil
     public static Bitmap? GetTouchTypeBackground(SlotTouchType type) => type switch
     {
         SlotTouchType.None => null,
-        SlotTouchType.Get => SpriteUtil.Spriter.View,
-        SlotTouchType.Set => SpriteUtil.Spriter.Set,
-        SlotTouchType.Delete => SpriteUtil.Spriter.Delete,
-        SlotTouchType.Swap => SpriteUtil.Spriter.Set,
+        SlotTouchType.Get => SpriteUtil.Spriter.View.ToBitmap(),
+        SlotTouchType.Set => SpriteUtil.Spriter.Set.ToBitmap(),
+        SlotTouchType.Delete => SpriteUtil.Spriter.Delete.ToBitmap(),
+        SlotTouchType.Swap => SpriteUtil.Spriter.Set.ToBitmap(),
         _ => throw new ArgumentOutOfRangeException(nameof(type), type, null),
     };
 
@@ -72,8 +73,8 @@ public static class SlotUtil
 
     private static Bitmap GetImage(ISlotInfo info, PKM pk, SaveFile sav, SlotVisibilityType flags) => info switch
     {
-        SlotInfoBox b => pk.Sprite(sav, b.Box, b.Slot, flags, b.Type),
-        SlotInfoParty ps => pk.Sprite(sav, -1, ps.Slot, flags, ps.Type),
-        _ => pk.Sprite(sav, -1, -1, flags, info.Type),
+        SlotInfoBox b => pk.Sprite(sav, b.Box, b.Slot, flags, b.Type).ToBitmap(),
+        SlotInfoParty ps => pk.Sprite(sav, -1, ps.Slot, flags, ps.Type).ToBitmap(),
+        _ => pk.Sprite(sav, -1, -1, flags, info.Type).ToBitmap(),
     };
 }

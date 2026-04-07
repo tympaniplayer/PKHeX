@@ -1,4 +1,4 @@
-using System.Drawing;
+using SkiaSharp;
 using PKHeX.Core;
 using PKHeX.Drawing.Misc.Properties;
 
@@ -12,9 +12,7 @@ public static class RibbonSpriteUtil
     /// <summary>
     /// Gets the ribbon sprite image for the specified <see cref="RibbonIndex"/>.
     /// </summary>
-    /// <param name="ribbon">The ribbon index to get the sprite for.</param>
-    /// <returns>A <see cref="Bitmap"/> representing the ribbon sprite, or null if not available.</returns>
-    public static Bitmap? GetRibbonSprite(RibbonIndex ribbon)
+    public static SKBitmap? GetRibbonSprite(RibbonIndex ribbon)
     {
         var name = $"Ribbon{ribbon}";
         return GetRibbonSprite(name);
@@ -23,25 +21,27 @@ public static class RibbonSpriteUtil
     /// <summary>
     /// Gets the ribbon sprite image for the specified ribbon name.
     /// </summary>
-    /// <param name="name">The name of the ribbon.</param>
-    /// <returns>A <see cref="Bitmap"/> representing the ribbon sprite, or null if not available.</returns>
-    public static Bitmap? GetRibbonSprite(string name)
+    public static SKBitmap? GetRibbonSprite(string name)
     {
         var resource = name.Replace("CountG3", "G3").ToLowerInvariant();
-        return (Bitmap?)Resources.ResourceManager.GetObject(resource);
+        return GetResourceBitmap(resource);
     }
 
     /// <summary>
     /// Gets the ribbon sprite image for the specified ribbon name, maximum value, and current value.
     /// </summary>
-    /// <param name="name">The name of the ribbon.</param>
-    /// <param name="max">The maximum value for the ribbon.</param>
-    /// <param name="value">The current value for the ribbon.</param>
-    /// <returns>A <see cref="Bitmap"/> representing the ribbon sprite, or null if not available.</returns>
-    public static Bitmap? GetRibbonSprite(string name, int max, int value)
+    public static SKBitmap? GetRibbonSprite(string name, int max, int value)
     {
         var resource = GetRibbonSpriteName(name, max, value);
-        return (Bitmap?)Resources.ResourceManager.GetObject(resource);
+        return GetResourceBitmap(resource);
+    }
+
+    private static SKBitmap? GetResourceBitmap(string name)
+    {
+        var obj = Resources.ResourceManager.GetObject(name);
+        if (obj is byte[] bytes)
+            return SKBitmap.Decode(bytes);
+        return null;
     }
 
     private static string GetRibbonSpriteName(string name, int max, int value)

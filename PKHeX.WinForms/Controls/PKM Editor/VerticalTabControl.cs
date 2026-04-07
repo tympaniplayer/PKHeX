@@ -37,7 +37,7 @@ public class VerticalTabControl : TabControl
         // Draw tab background
         if (index == SelectedIndex)
         {
-            var (c1, c2) = (DefaultBackColor, ColorUtil.Blend(DefaultBackColor, SystemColors.ScrollBar, 0.4));
+            var (c1, c2) = (DefaultBackColor, ColorUtil.Blend(DefaultBackColor.ToSKColor(), SystemColors.ScrollBar.ToSKColor(), 0.4).ToDrawingColor());
             using var brush = new LinearGradientBrush(bounds, c1, c2, 90f);
             g.FillRectangle(brush, bounds);
         }
@@ -67,11 +67,11 @@ public sealed class VerticalTabControlEntityEditor : VerticalTabControl
     /// </summary>
     private static readonly Color[] SelectedTags =
     [
-        ContestColor.Cool, // Main
-        ContestColor.Beauty, // Met
-        ContestColor.Cute, // Stats
-        ContestColor.Clever, // Moves
-        ContestColor.Tough, // Cosmetic
+        ContestColor.Cool.ToDrawingColor(), // Main
+        ContestColor.Beauty.ToDrawingColor(), // Met
+        ContestColor.Cute.ToDrawingColor(), // Stats
+        ContestColor.Clever.ToDrawingColor(), // Moves
+        ContestColor.Tough.ToDrawingColor(), // Cosmetic
         Color.RosyBrown, // OT
     ];
 
@@ -95,7 +95,7 @@ public sealed class VerticalTabControlEntityEditor : VerticalTabControl
         // Draw tab background
         if (index == SelectedIndex)
         {
-            var (c1, c2) = (DefaultBackColor, ColorUtil.Blend(DefaultBackColor, SystemColors.ScrollBar, 0.4));
+            var (c1, c2) = (DefaultBackColor, ColorUtil.Blend(DefaultBackColor.ToSKColor(), SystemColors.ScrollBar.ToSKColor(), 0.4).ToDrawingColor());
             using var brush = new LinearGradientBrush(bounds, c1, c2, 90f);
             g.FillRectangle(brush, bounds);
 

@@ -30,7 +30,7 @@ public partial class MoveChoice : UserControl
         }
 
         var type = MoveInfo.GetType((ushort)value, Context);
-        PB_Type.Image = TypeSpriteUtil.GetTypeSpriteIconSmall(type);
+        PB_Type.Image = TypeSpriteUtil.GetTypeSpriteIconSmall(type).ToImage();
     }
 
     private static void LoadClamp(ComboBox cb, int value)

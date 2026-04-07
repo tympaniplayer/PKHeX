@@ -1,4 +1,4 @@
-using System.Drawing;
+using SkiaSharp;
 using PKHeX.Core;
 using PKHeX.Drawing.Misc.Properties;
 using static PKHeX.Core.GameVersion;
@@ -10,17 +10,14 @@ namespace PKHeX.Drawing.Misc;
 /// </summary>
 public static class WallpaperUtil
 {
-    private static Bitmap DefaultWallpaper => Resources.box_wp16xy;
+    private static SKBitmap DefaultWallpaper => Resources.box_wp16xy;
 
     /// <summary>
     /// Gets the wallpaper image for the specified save file and box index.
     /// </summary>
-    /// <param name="sav">The save file to get the wallpaper for.</param>
-    /// <param name="box">The box index.</param>
-    /// <returns>A <see cref="Bitmap"/> representing the wallpaper image.</returns>
-    public static Bitmap WallpaperImage(this SaveFile sav, int box) => GetWallpaper(sav, box);
+    public static SKBitmap WallpaperImage(this SaveFile sav, int box) => GetWallpaper(sav, box);
 
-    private static Bitmap GetWallpaper(SaveFile sav, int box)
+    private static SKBitmap GetWallpaper(SaveFile sav, int box)
     {
         if (sav is not IBoxDetailWallpaper wp)
             return DefaultWallpaper;
@@ -33,15 +30,12 @@ public static class WallpaperUtil
 
         int wallpaper = wp.GetBoxWallpaper(box);
         string s = GetWallpaperResourceName(sav.Version, wallpaper);
-        return (Bitmap?)Resources.ResourceManager.GetObject(s) ?? DefaultWallpaper;
+        return Resources.GetCachedBitmap(s) ?? DefaultWallpaper;
     }
 
     /// <summary>
     /// Gets the resource name for the wallpaper image based on game version and index.
     /// </summary>
-    /// <param name="version">The game version.</param>
-    /// <param name="index">The wallpaper index.</param>
-    /// <returns>The resource name for the wallpaper image.</returns>
     public static string GetWallpaperResourceName(GameVersion version, int index)
     {
         index++; // start indexes at 1

@@ -54,9 +54,9 @@ public partial class ShinyLeaf : UserControl
             else if (HasAllFiveLeafs())
                 CHK_C.Enabled = true;
         }
-        if (!c.Checked)
-            resource = ImageUtil.CopyChangeOpacity(resource, 0.4);
-        c.Image = resource;
+        c.Image = !c.Checked
+            ? ImageUtil.CopyChangeOpacity(resource.ToSKBitmap(), 0.4).ToBitmap()
+            : resource;
     }
 
     private bool HasAllFiveLeafs()

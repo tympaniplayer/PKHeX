@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace PKHeX.Drawing.Misc.Properties {
+    using SkiaSharp;
     using System;
     
     
@@ -27,6 +28,17 @@ namespace PKHeX.Drawing.Misc.Properties {
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        private static readonly global::System.Collections.Concurrent.ConcurrentDictionary<string, SKBitmap> _bitmapCache = new();
+        
+        public static SKBitmap GetCachedBitmap(string name) {
+            return _bitmapCache.GetOrAdd(name, static (key, rm) => {
+                object obj = rm.GetObject(key);
+                if (obj is byte[] bytes)
+                    return SKBitmap.Decode(bytes);
+                return new SKBitmap(1, 1);
+            }, ResourceManager);
+        }
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
@@ -61,8502 +73,7652 @@ namespace PKHeX.Drawing.Misc.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Bag_Key {
+        public static SKBitmap Bag_Key {
             get {
-                object obj = ResourceManager.GetObject("Bag_Key", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("Bag_Key");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_01_lv1 {
+        public static SKBitmap bitter_01_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_01_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_01_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_01_lv2 {
+        public static SKBitmap bitter_01_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_01_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_01_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_01_lv3 {
+        public static SKBitmap bitter_01_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_01_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_01_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_02_lv1 {
+        public static SKBitmap bitter_02_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_02_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_02_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_02_lv2 {
+        public static SKBitmap bitter_02_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_02_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_02_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_02_lv3 {
+        public static SKBitmap bitter_02_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_02_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_02_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_03_lv1 {
+        public static SKBitmap bitter_03_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_03_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_03_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_03_lv2 {
+        public static SKBitmap bitter_03_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_03_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_03_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_03_lv3 {
+        public static SKBitmap bitter_03_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_03_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_03_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_04_lv1 {
+        public static SKBitmap bitter_04_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_04_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_04_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_04_lv2 {
+        public static SKBitmap bitter_04_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_04_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_04_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_04_lv3 {
+        public static SKBitmap bitter_04_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_04_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_04_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_05_lv1 {
+        public static SKBitmap bitter_05_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_05_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_05_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_05_lv2 {
+        public static SKBitmap bitter_05_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_05_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_05_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_05_lv3 {
+        public static SKBitmap bitter_05_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_05_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_05_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_06_lv1 {
+        public static SKBitmap bitter_06_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_06_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_06_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_06_lv2 {
+        public static SKBitmap bitter_06_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_06_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_06_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_06_lv3 {
+        public static SKBitmap bitter_06_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_06_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_06_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_07_lv1 {
+        public static SKBitmap bitter_07_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_07_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_07_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_07_lv2 {
+        public static SKBitmap bitter_07_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_07_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_07_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_07_lv3 {
+        public static SKBitmap bitter_07_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_07_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_07_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_08_lv1 {
+        public static SKBitmap bitter_08_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_08_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_08_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_08_lv2 {
+        public static SKBitmap bitter_08_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_08_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_08_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_08_lv3 {
+        public static SKBitmap bitter_08_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_08_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_08_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_09_lv1 {
+        public static SKBitmap bitter_09_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_09_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_09_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_09_lv2 {
+        public static SKBitmap bitter_09_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_09_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_09_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_09_lv3 {
+        public static SKBitmap bitter_09_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_09_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_09_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_10_lv1 {
+        public static SKBitmap bitter_10_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_10_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_10_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_10_lv2 {
+        public static SKBitmap bitter_10_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_10_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_10_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_10_lv3 {
+        public static SKBitmap bitter_10_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_10_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_10_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_11_lv1 {
+        public static SKBitmap bitter_11_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_11_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_11_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_11_lv2 {
+        public static SKBitmap bitter_11_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_11_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_11_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_11_lv3 {
+        public static SKBitmap bitter_11_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_11_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_11_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_12_lv1 {
+        public static SKBitmap bitter_12_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_12_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_12_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_12_lv2 {
+        public static SKBitmap bitter_12_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_12_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_12_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_12_lv3 {
+        public static SKBitmap bitter_12_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_12_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_12_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_13_lv1 {
+        public static SKBitmap bitter_13_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_13_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_13_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_13_lv2 {
+        public static SKBitmap bitter_13_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_13_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_13_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_13_lv3 {
+        public static SKBitmap bitter_13_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_13_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_13_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_14_lv1 {
+        public static SKBitmap bitter_14_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_14_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_14_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_14_lv2 {
+        public static SKBitmap bitter_14_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_14_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_14_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_14_lv3 {
+        public static SKBitmap bitter_14_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_14_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_14_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_15_lv1 {
+        public static SKBitmap bitter_15_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_15_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_15_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_15_lv2 {
+        public static SKBitmap bitter_15_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_15_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_15_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_15_lv3 {
+        public static SKBitmap bitter_15_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_15_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_15_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_16_lv1 {
+        public static SKBitmap bitter_16_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_16_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_16_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_16_lv2 {
+        public static SKBitmap bitter_16_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_16_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_16_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_16_lv3 {
+        public static SKBitmap bitter_16_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_16_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_16_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_17_lv1 {
+        public static SKBitmap bitter_17_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_17_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_17_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_17_lv2 {
+        public static SKBitmap bitter_17_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_17_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_17_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_17_lv3 {
+        public static SKBitmap bitter_17_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_17_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_17_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_18_lv1 {
+        public static SKBitmap bitter_18_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_18_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_18_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_18_lv2 {
+        public static SKBitmap bitter_18_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_18_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_18_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_18_lv3 {
+        public static SKBitmap bitter_18_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_18_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_18_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_19_lv1 {
+        public static SKBitmap bitter_19_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_19_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_19_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_19_lv2 {
+        public static SKBitmap bitter_19_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_19_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_19_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_19_lv3 {
+        public static SKBitmap bitter_19_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_19_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_19_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_20_lv1 {
+        public static SKBitmap bitter_20_lv1 {
             get {
-                object obj = ResourceManager.GetObject("bitter_20_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_20_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_20_lv2 {
+        public static SKBitmap bitter_20_lv2 {
             get {
-                object obj = ResourceManager.GetObject("bitter_20_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_20_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap bitter_20_lv3 {
+        public static SKBitmap bitter_20_lv3 {
             get {
-                object obj = ResourceManager.GetObject("bitter_20_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("bitter_20_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp01bdsp {
+        public static SKBitmap box_wp01bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp01bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp01bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp01bw {
+        public static SKBitmap box_wp01bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp01bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp01bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp01dp {
+        public static SKBitmap box_wp01dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp01dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp01dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp01e {
+        public static SKBitmap box_wp01e {
             get {
-                object obj = ResourceManager.GetObject("box_wp01e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp01e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp01rs {
+        public static SKBitmap box_wp01rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp01rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp01rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp01sv {
+        public static SKBitmap box_wp01sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp01sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp01sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp01swsh {
+        public static SKBitmap box_wp01swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp01swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp01swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp01xy {
+        public static SKBitmap box_wp01xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp01xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp01xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp02bdsp {
+        public static SKBitmap box_wp02bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp02bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp02bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp02bw {
+        public static SKBitmap box_wp02bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp02bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp02bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp02dp {
+        public static SKBitmap box_wp02dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp02dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp02dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp02e {
+        public static SKBitmap box_wp02e {
             get {
-                object obj = ResourceManager.GetObject("box_wp02e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp02e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp02rs {
+        public static SKBitmap box_wp02rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp02rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp02rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp02sv {
+        public static SKBitmap box_wp02sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp02sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp02sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp02swsh {
+        public static SKBitmap box_wp02swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp02swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp02swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp02xy {
+        public static SKBitmap box_wp02xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp02xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp02xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp03bdsp {
+        public static SKBitmap box_wp03bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp03bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp03bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp03bw {
+        public static SKBitmap box_wp03bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp03bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp03bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp03dp {
+        public static SKBitmap box_wp03dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp03dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp03dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp03e {
+        public static SKBitmap box_wp03e {
             get {
-                object obj = ResourceManager.GetObject("box_wp03e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp03e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp03rs {
+        public static SKBitmap box_wp03rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp03rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp03rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp03sv {
+        public static SKBitmap box_wp03sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp03sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp03sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp03swsh {
+        public static SKBitmap box_wp03swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp03swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp03swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp03xy {
+        public static SKBitmap box_wp03xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp03xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp03xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp04bdsp {
+        public static SKBitmap box_wp04bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp04bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp04bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp04bw {
+        public static SKBitmap box_wp04bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp04bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp04bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp04dp {
+        public static SKBitmap box_wp04dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp04dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp04dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp04e {
+        public static SKBitmap box_wp04e {
             get {
-                object obj = ResourceManager.GetObject("box_wp04e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp04e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp04rs {
+        public static SKBitmap box_wp04rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp04rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp04rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp04sv {
+        public static SKBitmap box_wp04sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp04sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp04sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp04swsh {
+        public static SKBitmap box_wp04swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp04swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp04swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp04xy {
+        public static SKBitmap box_wp04xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp04xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp04xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp05bdsp {
+        public static SKBitmap box_wp05bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp05bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp05bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp05bw {
+        public static SKBitmap box_wp05bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp05bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp05bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp05dp {
+        public static SKBitmap box_wp05dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp05dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp05dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp05e {
+        public static SKBitmap box_wp05e {
             get {
-                object obj = ResourceManager.GetObject("box_wp05e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp05e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp05rs {
+        public static SKBitmap box_wp05rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp05rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp05rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp05sv {
+        public static SKBitmap box_wp05sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp05sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp05sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp05swsh {
+        public static SKBitmap box_wp05swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp05swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp05swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp05xy {
+        public static SKBitmap box_wp05xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp05xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp05xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp06bdsp {
+        public static SKBitmap box_wp06bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp06bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp06bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp06bw {
+        public static SKBitmap box_wp06bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp06bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp06bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp06dp {
+        public static SKBitmap box_wp06dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp06dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp06dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp06e {
+        public static SKBitmap box_wp06e {
             get {
-                object obj = ResourceManager.GetObject("box_wp06e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp06e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp06rs {
+        public static SKBitmap box_wp06rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp06rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp06rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp06sv {
+        public static SKBitmap box_wp06sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp06sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp06sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp06swsh {
+        public static SKBitmap box_wp06swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp06swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp06swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp06xy {
+        public static SKBitmap box_wp06xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp06xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp06xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp07bdsp {
+        public static SKBitmap box_wp07bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp07bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp07bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp07bw {
+        public static SKBitmap box_wp07bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp07bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp07bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp07dp {
+        public static SKBitmap box_wp07dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp07dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp07dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp07e {
+        public static SKBitmap box_wp07e {
             get {
-                object obj = ResourceManager.GetObject("box_wp07e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp07e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp07rs {
+        public static SKBitmap box_wp07rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp07rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp07rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp07sv {
+        public static SKBitmap box_wp07sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp07sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp07sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp07swsh {
+        public static SKBitmap box_wp07swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp07swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp07swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp07xy {
+        public static SKBitmap box_wp07xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp07xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp07xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp08bdsp {
+        public static SKBitmap box_wp08bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp08bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp08bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp08bw {
+        public static SKBitmap box_wp08bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp08bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp08bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp08dp {
+        public static SKBitmap box_wp08dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp08dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp08dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp08e {
+        public static SKBitmap box_wp08e {
             get {
-                object obj = ResourceManager.GetObject("box_wp08e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp08e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp08rs {
+        public static SKBitmap box_wp08rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp08rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp08rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp08sv {
+        public static SKBitmap box_wp08sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp08sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp08sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp08swsh {
+        public static SKBitmap box_wp08swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp08swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp08swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp08xy {
+        public static SKBitmap box_wp08xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp08xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp08xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp09bdsp {
+        public static SKBitmap box_wp09bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp09bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp09bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp09bw {
+        public static SKBitmap box_wp09bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp09bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp09bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp09dp {
+        public static SKBitmap box_wp09dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp09dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp09dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp09e {
+        public static SKBitmap box_wp09e {
             get {
-                object obj = ResourceManager.GetObject("box_wp09e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp09e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp09rs {
+        public static SKBitmap box_wp09rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp09rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp09rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp09sv {
+        public static SKBitmap box_wp09sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp09sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp09sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp09swsh {
+        public static SKBitmap box_wp09swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp09swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp09swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp09xy {
+        public static SKBitmap box_wp09xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp09xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp09xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp10bdsp {
+        public static SKBitmap box_wp10bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp10bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp10bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp10bw {
+        public static SKBitmap box_wp10bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp10bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp10bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp10dp {
+        public static SKBitmap box_wp10dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp10dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp10dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp10e {
+        public static SKBitmap box_wp10e {
             get {
-                object obj = ResourceManager.GetObject("box_wp10e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp10e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp10rs {
+        public static SKBitmap box_wp10rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp10rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp10rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp10sv {
+        public static SKBitmap box_wp10sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp10sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp10sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp10swsh {
+        public static SKBitmap box_wp10swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp10swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp10swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp10xy {
+        public static SKBitmap box_wp10xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp10xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp10xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp11bdsp {
+        public static SKBitmap box_wp11bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp11bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp11bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp11bw {
+        public static SKBitmap box_wp11bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp11bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp11bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp11dp {
+        public static SKBitmap box_wp11dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp11dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp11dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp11e {
+        public static SKBitmap box_wp11e {
             get {
-                object obj = ResourceManager.GetObject("box_wp11e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp11e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp11rs {
+        public static SKBitmap box_wp11rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp11rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp11rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp11sv {
+        public static SKBitmap box_wp11sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp11sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp11sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp11swsh {
+        public static SKBitmap box_wp11swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp11swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp11swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp11xy {
+        public static SKBitmap box_wp11xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp11xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp11xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp12bdsp {
+        public static SKBitmap box_wp12bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp12bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp12bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp12bw {
+        public static SKBitmap box_wp12bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp12bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp12bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp12dp {
+        public static SKBitmap box_wp12dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp12dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp12dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp12e {
+        public static SKBitmap box_wp12e {
             get {
-                object obj = ResourceManager.GetObject("box_wp12e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp12e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp12rs {
+        public static SKBitmap box_wp12rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp12rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp12rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp12sv {
+        public static SKBitmap box_wp12sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp12sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp12sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp12swsh {
+        public static SKBitmap box_wp12swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp12swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp12swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp12xy {
+        public static SKBitmap box_wp12xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp12xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp12xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp13bdsp {
+        public static SKBitmap box_wp13bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp13bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp13bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp13bw {
+        public static SKBitmap box_wp13bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp13bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp13bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp13dp {
+        public static SKBitmap box_wp13dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp13dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp13dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp13e {
+        public static SKBitmap box_wp13e {
             get {
-                object obj = ResourceManager.GetObject("box_wp13e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp13e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp13frlg {
+        public static SKBitmap box_wp13frlg {
             get {
-                object obj = ResourceManager.GetObject("box_wp13frlg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp13frlg");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp13rs {
+        public static SKBitmap box_wp13rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp13rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp13rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp13sv {
+        public static SKBitmap box_wp13sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp13sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp13sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp13swsh {
+        public static SKBitmap box_wp13swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp13swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp13swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp13xy {
+        public static SKBitmap box_wp13xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp13xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp13xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp14bdsp {
+        public static SKBitmap box_wp14bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp14bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp14bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp14bw {
+        public static SKBitmap box_wp14bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp14bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp14bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp14dp {
+        public static SKBitmap box_wp14dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp14dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp14dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp14e {
+        public static SKBitmap box_wp14e {
             get {
-                object obj = ResourceManager.GetObject("box_wp14e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp14e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp14frlg {
+        public static SKBitmap box_wp14frlg {
             get {
-                object obj = ResourceManager.GetObject("box_wp14frlg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp14frlg");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp14rs {
+        public static SKBitmap box_wp14rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp14rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp14rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp14sv {
+        public static SKBitmap box_wp14sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp14sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp14sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp14swsh {
+        public static SKBitmap box_wp14swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp14swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp14swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp14xy {
+        public static SKBitmap box_wp14xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp14xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp14xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp15bdsp {
+        public static SKBitmap box_wp15bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp15bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp15bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp15bw {
+        public static SKBitmap box_wp15bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp15bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp15bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp15dp {
+        public static SKBitmap box_wp15dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp15dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp15dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp15e {
+        public static SKBitmap box_wp15e {
             get {
-                object obj = ResourceManager.GetObject("box_wp15e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp15e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp15frlg {
+        public static SKBitmap box_wp15frlg {
             get {
-                object obj = ResourceManager.GetObject("box_wp15frlg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp15frlg");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp15rs {
+        public static SKBitmap box_wp15rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp15rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp15rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp15sv {
+        public static SKBitmap box_wp15sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp15sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp15sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp15swsh {
+        public static SKBitmap box_wp15swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp15swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp15swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp15xy {
+        public static SKBitmap box_wp15xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp15xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp15xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp16bdsp {
+        public static SKBitmap box_wp16bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp16bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp16bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp16bw {
+        public static SKBitmap box_wp16bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp16bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp16bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp16dp {
+        public static SKBitmap box_wp16dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp16dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp16dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp16e {
+        public static SKBitmap box_wp16e {
             get {
-                object obj = ResourceManager.GetObject("box_wp16e", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp16e");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp16frlg {
+        public static SKBitmap box_wp16frlg {
             get {
-                object obj = ResourceManager.GetObject("box_wp16frlg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp16frlg");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp16rs {
+        public static SKBitmap box_wp16rs {
             get {
-                object obj = ResourceManager.GetObject("box_wp16rs", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp16rs");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp16sv {
+        public static SKBitmap box_wp16sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp16sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp16sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp16swsh {
+        public static SKBitmap box_wp16swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp16swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp16swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp16xy {
+        public static SKBitmap box_wp16xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp16xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp16xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp17ao {
+        public static SKBitmap box_wp17ao {
             get {
-                object obj = ResourceManager.GetObject("box_wp17ao", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp17ao");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp17b2w2 {
+        public static SKBitmap box_wp17b2w2 {
             get {
-                object obj = ResourceManager.GetObject("box_wp17b2w2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp17b2w2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp17bdsp {
+        public static SKBitmap box_wp17bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp17bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp17bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp17bw {
+        public static SKBitmap box_wp17bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp17bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp17bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp17dp {
+        public static SKBitmap box_wp17dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp17dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp17dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp17hgss {
+        public static SKBitmap box_wp17hgss {
             get {
-                object obj = ResourceManager.GetObject("box_wp17hgss", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp17hgss");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp17pt {
+        public static SKBitmap box_wp17pt {
             get {
-                object obj = ResourceManager.GetObject("box_wp17pt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp17pt");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp17sv {
+        public static SKBitmap box_wp17sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp17sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp17sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp17swsh {
+        public static SKBitmap box_wp17swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp17swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp17swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp17xy {
+        public static SKBitmap box_wp17xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp17xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp17xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp18ao {
+        public static SKBitmap box_wp18ao {
             get {
-                object obj = ResourceManager.GetObject("box_wp18ao", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp18ao");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp18b2w2 {
+        public static SKBitmap box_wp18b2w2 {
             get {
-                object obj = ResourceManager.GetObject("box_wp18b2w2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp18b2w2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp18bdsp {
+        public static SKBitmap box_wp18bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp18bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp18bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp18bw {
+        public static SKBitmap box_wp18bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp18bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp18bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp18dp {
+        public static SKBitmap box_wp18dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp18dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp18dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp18hgss {
+        public static SKBitmap box_wp18hgss {
             get {
-                object obj = ResourceManager.GetObject("box_wp18hgss", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp18hgss");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp18pt {
+        public static SKBitmap box_wp18pt {
             get {
-                object obj = ResourceManager.GetObject("box_wp18pt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp18pt");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp18sv {
+        public static SKBitmap box_wp18sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp18sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp18sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp18swsh {
+        public static SKBitmap box_wp18swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp18swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp18swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp18xy {
+        public static SKBitmap box_wp18xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp18xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp18xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp19ao {
+        public static SKBitmap box_wp19ao {
             get {
-                object obj = ResourceManager.GetObject("box_wp19ao", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp19ao");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp19b2w2 {
+        public static SKBitmap box_wp19b2w2 {
             get {
-                object obj = ResourceManager.GetObject("box_wp19b2w2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp19b2w2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp19bdsp {
+        public static SKBitmap box_wp19bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp19bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp19bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp19bw {
+        public static SKBitmap box_wp19bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp19bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp19bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp19dp {
+        public static SKBitmap box_wp19dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp19dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp19dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp19hgss {
+        public static SKBitmap box_wp19hgss {
             get {
-                object obj = ResourceManager.GetObject("box_wp19hgss", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp19hgss");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp19pt {
+        public static SKBitmap box_wp19pt {
             get {
-                object obj = ResourceManager.GetObject("box_wp19pt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp19pt");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp19sv {
+        public static SKBitmap box_wp19sv {
             get {
-                object obj = ResourceManager.GetObject("box_wp19sv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp19sv");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp19swsh {
+        public static SKBitmap box_wp19swsh {
             get {
-                object obj = ResourceManager.GetObject("box_wp19swsh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp19swsh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp19xy {
+        public static SKBitmap box_wp19xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp19xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp19xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp20ao {
+        public static SKBitmap box_wp20ao {
             get {
-                object obj = ResourceManager.GetObject("box_wp20ao", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp20ao");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp20b2w2 {
+        public static SKBitmap box_wp20b2w2 {
             get {
-                object obj = ResourceManager.GetObject("box_wp20b2w2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp20b2w2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp20bdsp {
+        public static SKBitmap box_wp20bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp20bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp20bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp20bw {
+        public static SKBitmap box_wp20bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp20bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp20bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp20dp {
+        public static SKBitmap box_wp20dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp20dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp20dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp20hgss {
+        public static SKBitmap box_wp20hgss {
             get {
-                object obj = ResourceManager.GetObject("box_wp20hgss", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp20hgss");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp20pt {
+        public static SKBitmap box_wp20pt {
             get {
-                object obj = ResourceManager.GetObject("box_wp20pt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp20pt");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp20sv_n {
+        public static SKBitmap box_wp20sv_n {
             get {
-                object obj = ResourceManager.GetObject("box_wp20sv_n", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp20sv_n");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp20sv_u {
+        public static SKBitmap box_wp20sv_u {
             get {
-                object obj = ResourceManager.GetObject("box_wp20sv_u", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp20sv_u");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp20xy {
+        public static SKBitmap box_wp20xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp20xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp20xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp21ao {
+        public static SKBitmap box_wp21ao {
             get {
-                object obj = ResourceManager.GetObject("box_wp21ao", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp21ao");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp21b2w2 {
+        public static SKBitmap box_wp21b2w2 {
             get {
-                object obj = ResourceManager.GetObject("box_wp21b2w2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp21b2w2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp21bdsp {
+        public static SKBitmap box_wp21bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp21bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp21bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp21bw {
+        public static SKBitmap box_wp21bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp21bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp21bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp21dp {
+        public static SKBitmap box_wp21dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp21dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp21dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp21hgss {
+        public static SKBitmap box_wp21hgss {
             get {
-                object obj = ResourceManager.GetObject("box_wp21hgss", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp21hgss");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp21pt {
+        public static SKBitmap box_wp21pt {
             get {
-                object obj = ResourceManager.GetObject("box_wp21pt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp21pt");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp21xy {
+        public static SKBitmap box_wp21xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp21xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp21xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp22ao {
+        public static SKBitmap box_wp22ao {
             get {
-                object obj = ResourceManager.GetObject("box_wp22ao", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp22ao");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp22b2w2 {
+        public static SKBitmap box_wp22b2w2 {
             get {
-                object obj = ResourceManager.GetObject("box_wp22b2w2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp22b2w2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp22bdsp {
+        public static SKBitmap box_wp22bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp22bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp22bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp22bw {
+        public static SKBitmap box_wp22bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp22bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp22bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp22dp {
+        public static SKBitmap box_wp22dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp22dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp22dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp22hgss {
+        public static SKBitmap box_wp22hgss {
             get {
-                object obj = ResourceManager.GetObject("box_wp22hgss", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp22hgss");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp22pt {
+        public static SKBitmap box_wp22pt {
             get {
-                object obj = ResourceManager.GetObject("box_wp22pt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp22pt");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp22xy {
+        public static SKBitmap box_wp22xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp22xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp22xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp23ao {
+        public static SKBitmap box_wp23ao {
             get {
-                object obj = ResourceManager.GetObject("box_wp23ao", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp23ao");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp23b2w2 {
+        public static SKBitmap box_wp23b2w2 {
             get {
-                object obj = ResourceManager.GetObject("box_wp23b2w2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp23b2w2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp23bdsp {
+        public static SKBitmap box_wp23bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp23bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp23bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp23bw {
+        public static SKBitmap box_wp23bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp23bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp23bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp23dp {
+        public static SKBitmap box_wp23dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp23dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp23dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp23hgss {
+        public static SKBitmap box_wp23hgss {
             get {
-                object obj = ResourceManager.GetObject("box_wp23hgss", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp23hgss");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp23pt {
+        public static SKBitmap box_wp23pt {
             get {
-                object obj = ResourceManager.GetObject("box_wp23pt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp23pt");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp23xy {
+        public static SKBitmap box_wp23xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp23xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp23xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp24ao {
+        public static SKBitmap box_wp24ao {
             get {
-                object obj = ResourceManager.GetObject("box_wp24ao", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp24ao");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp24b2w2 {
+        public static SKBitmap box_wp24b2w2 {
             get {
-                object obj = ResourceManager.GetObject("box_wp24b2w2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp24b2w2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp24bdsp {
+        public static SKBitmap box_wp24bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp24bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp24bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp24bw {
+        public static SKBitmap box_wp24bw {
             get {
-                object obj = ResourceManager.GetObject("box_wp24bw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp24bw");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp24dp {
+        public static SKBitmap box_wp24dp {
             get {
-                object obj = ResourceManager.GetObject("box_wp24dp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp24dp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp24hgss {
+        public static SKBitmap box_wp24hgss {
             get {
-                object obj = ResourceManager.GetObject("box_wp24hgss", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp24hgss");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp24pt {
+        public static SKBitmap box_wp24pt {
             get {
-                object obj = ResourceManager.GetObject("box_wp24pt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp24pt");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp24xy {
+        public static SKBitmap box_wp24xy {
             get {
-                object obj = ResourceManager.GetObject("box_wp24xy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp24xy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp25bdsp {
+        public static SKBitmap box_wp25bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp25bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp25bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp26bdsp {
+        public static SKBitmap box_wp26bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp26bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp26bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp27bdsp {
+        public static SKBitmap box_wp27bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp27bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp27bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp28bdsp {
+        public static SKBitmap box_wp28bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp28bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp28bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp29bdsp {
+        public static SKBitmap box_wp29bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp29bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp29bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp30bdsp {
+        public static SKBitmap box_wp30bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp30bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp30bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp31bdsp {
+        public static SKBitmap box_wp31bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp31bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp31bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box_wp32bdsp {
+        public static SKBitmap box_wp32bdsp {
             get {
-                object obj = ResourceManager.GetObject("box_wp32bdsp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("box_wp32bdsp");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_bitter00 {
+        public static SKBitmap donut_bitter00 {
             get {
-                object obj = ResourceManager.GetObject("donut_bitter00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_bitter00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_bitter01 {
+        public static SKBitmap donut_bitter01 {
             get {
-                object obj = ResourceManager.GetObject("donut_bitter01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_bitter01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_bitter02 {
+        public static SKBitmap donut_bitter02 {
             get {
-                object obj = ResourceManager.GetObject("donut_bitter02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_bitter02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_bitter03 {
+        public static SKBitmap donut_bitter03 {
             get {
-                object obj = ResourceManager.GetObject("donut_bitter03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_bitter03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_bitter04 {
+        public static SKBitmap donut_bitter04 {
             get {
-                object obj = ResourceManager.GetObject("donut_bitter04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_bitter04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_bitter05 {
+        public static SKBitmap donut_bitter05 {
             get {
-                object obj = ResourceManager.GetObject("donut_bitter05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_bitter05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_fresh00 {
+        public static SKBitmap donut_fresh00 {
             get {
-                object obj = ResourceManager.GetObject("donut_fresh00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_fresh00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_fresh01 {
+        public static SKBitmap donut_fresh01 {
             get {
-                object obj = ResourceManager.GetObject("donut_fresh01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_fresh01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_fresh02 {
+        public static SKBitmap donut_fresh02 {
             get {
-                object obj = ResourceManager.GetObject("donut_fresh02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_fresh02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_fresh03 {
+        public static SKBitmap donut_fresh03 {
             get {
-                object obj = ResourceManager.GetObject("donut_fresh03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_fresh03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_fresh04 {
+        public static SKBitmap donut_fresh04 {
             get {
-                object obj = ResourceManager.GetObject("donut_fresh04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_fresh04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_fresh05 {
+        public static SKBitmap donut_fresh05 {
             get {
-                object obj = ResourceManager.GetObject("donut_fresh05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_fresh05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_mix00 {
+        public static SKBitmap donut_mix00 {
             get {
-                object obj = ResourceManager.GetObject("donut_mix00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_mix00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_mix01 {
+        public static SKBitmap donut_mix01 {
             get {
-                object obj = ResourceManager.GetObject("donut_mix01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_mix01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_mix02 {
+        public static SKBitmap donut_mix02 {
             get {
-                object obj = ResourceManager.GetObject("donut_mix02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_mix02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_mix03 {
+        public static SKBitmap donut_mix03 {
             get {
-                object obj = ResourceManager.GetObject("donut_mix03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_mix03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_mix04 {
+        public static SKBitmap donut_mix04 {
             get {
-                object obj = ResourceManager.GetObject("donut_mix04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_mix04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_mix05 {
+        public static SKBitmap donut_mix05 {
             get {
-                object obj = ResourceManager.GetObject("donut_mix05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_mix05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sour00 {
+        public static SKBitmap donut_sour00 {
             get {
-                object obj = ResourceManager.GetObject("donut_sour00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sour00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sour01 {
+        public static SKBitmap donut_sour01 {
             get {
-                object obj = ResourceManager.GetObject("donut_sour01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sour01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sour02 {
+        public static SKBitmap donut_sour02 {
             get {
-                object obj = ResourceManager.GetObject("donut_sour02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sour02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sour03 {
+        public static SKBitmap donut_sour03 {
             get {
-                object obj = ResourceManager.GetObject("donut_sour03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sour03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sour04 {
+        public static SKBitmap donut_sour04 {
             get {
-                object obj = ResourceManager.GetObject("donut_sour04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sour04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sour05 {
+        public static SKBitmap donut_sour05 {
             get {
-                object obj = ResourceManager.GetObject("donut_sour05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sour05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_spicy00 {
+        public static SKBitmap donut_spicy00 {
             get {
-                object obj = ResourceManager.GetObject("donut_spicy00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_spicy00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_spicy01 {
+        public static SKBitmap donut_spicy01 {
             get {
-                object obj = ResourceManager.GetObject("donut_spicy01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_spicy01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_spicy02 {
+        public static SKBitmap donut_spicy02 {
             get {
-                object obj = ResourceManager.GetObject("donut_spicy02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_spicy02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_spicy03 {
+        public static SKBitmap donut_spicy03 {
             get {
-                object obj = ResourceManager.GetObject("donut_spicy03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_spicy03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_spicy04 {
+        public static SKBitmap donut_spicy04 {
             get {
-                object obj = ResourceManager.GetObject("donut_spicy04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_spicy04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_spicy05 {
+        public static SKBitmap donut_spicy05 {
             get {
-                object obj = ResourceManager.GetObject("donut_spicy05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_spicy05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sweet00 {
+        public static SKBitmap donut_sweet00 {
             get {
-                object obj = ResourceManager.GetObject("donut_sweet00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sweet00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sweet01 {
+        public static SKBitmap donut_sweet01 {
             get {
-                object obj = ResourceManager.GetObject("donut_sweet01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sweet01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sweet02 {
+        public static SKBitmap donut_sweet02 {
             get {
-                object obj = ResourceManager.GetObject("donut_sweet02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sweet02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sweet03 {
+        public static SKBitmap donut_sweet03 {
             get {
-                object obj = ResourceManager.GetObject("donut_sweet03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sweet03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sweet04 {
+        public static SKBitmap donut_sweet04 {
             get {
-                object obj = ResourceManager.GetObject("donut_sweet04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sweet04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_sweet05 {
+        public static SKBitmap donut_sweet05 {
             get {
-                object obj = ResourceManager.GetObject("donut_sweet05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_sweet05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_uni382 {
+        public static SKBitmap donut_uni382 {
             get {
-                object obj = ResourceManager.GetObject("donut_uni382", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_uni382");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_uni383 {
+        public static SKBitmap donut_uni383 {
             get {
-                object obj = ResourceManager.GetObject("donut_uni383", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_uni383");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_uni384 {
+        public static SKBitmap donut_uni384 {
             get {
-                object obj = ResourceManager.GetObject("donut_uni384", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_uni384");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_uni491 {
+        public static SKBitmap donut_uni491 {
             get {
-                object obj = ResourceManager.GetObject("donut_uni491", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_uni491");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap donut_uni807 {
+        public static SKBitmap donut_uni807 {
             get {
-                object obj = ResourceManager.GetObject("donut_uni807", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("donut_uni807");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap flavorprofile {
+        public static SKBitmap flavorprofile {
             get {
-                object obj = ResourceManager.GetObject("flavorprofile", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("flavorprofile");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_01_lv1 {
+        public static SKBitmap fresh_01_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_01_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_01_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_01_lv2 {
+        public static SKBitmap fresh_01_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_01_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_01_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_01_lv3 {
+        public static SKBitmap fresh_01_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_01_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_01_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_02_lv1 {
+        public static SKBitmap fresh_02_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_02_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_02_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_02_lv2 {
+        public static SKBitmap fresh_02_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_02_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_02_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_02_lv3 {
+        public static SKBitmap fresh_02_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_02_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_02_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_03_lv1 {
+        public static SKBitmap fresh_03_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_03_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_03_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_03_lv2 {
+        public static SKBitmap fresh_03_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_03_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_03_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_03_lv3 {
+        public static SKBitmap fresh_03_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_03_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_03_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_04_lv1 {
+        public static SKBitmap fresh_04_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_04_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_04_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_04_lv2 {
+        public static SKBitmap fresh_04_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_04_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_04_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_04_lv3 {
+        public static SKBitmap fresh_04_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_04_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_04_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_05_lv1 {
+        public static SKBitmap fresh_05_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_05_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_05_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_05_lv2 {
+        public static SKBitmap fresh_05_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_05_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_05_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_05_lv3 {
+        public static SKBitmap fresh_05_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_05_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_05_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_06_lv1 {
+        public static SKBitmap fresh_06_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_06_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_06_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_06_lv2 {
+        public static SKBitmap fresh_06_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_06_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_06_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_06_lv3 {
+        public static SKBitmap fresh_06_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_06_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_06_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_07_lv1 {
+        public static SKBitmap fresh_07_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_07_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_07_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_07_lv2 {
+        public static SKBitmap fresh_07_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_07_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_07_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_07_lv3 {
+        public static SKBitmap fresh_07_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_07_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_07_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_08_lv1 {
+        public static SKBitmap fresh_08_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_08_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_08_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_08_lv2 {
+        public static SKBitmap fresh_08_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_08_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_08_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_08_lv3 {
+        public static SKBitmap fresh_08_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_08_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_08_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_09_lv1 {
+        public static SKBitmap fresh_09_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_09_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_09_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_09_lv2 {
+        public static SKBitmap fresh_09_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_09_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_09_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_09_lv3 {
+        public static SKBitmap fresh_09_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_09_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_09_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_10_lv1 {
+        public static SKBitmap fresh_10_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_10_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_10_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_10_lv2 {
+        public static SKBitmap fresh_10_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_10_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_10_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_10_lv3 {
+        public static SKBitmap fresh_10_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_10_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_10_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_11_lv1 {
+        public static SKBitmap fresh_11_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_11_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_11_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_11_lv2 {
+        public static SKBitmap fresh_11_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_11_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_11_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_11_lv3 {
+        public static SKBitmap fresh_11_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_11_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_11_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_12_lv1 {
+        public static SKBitmap fresh_12_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_12_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_12_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_12_lv2 {
+        public static SKBitmap fresh_12_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_12_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_12_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_12_lv3 {
+        public static SKBitmap fresh_12_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_12_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_12_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_13_lv1 {
+        public static SKBitmap fresh_13_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_13_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_13_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_13_lv2 {
+        public static SKBitmap fresh_13_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_13_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_13_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_13_lv3 {
+        public static SKBitmap fresh_13_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_13_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_13_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_14_lv1 {
+        public static SKBitmap fresh_14_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_14_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_14_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_14_lv2 {
+        public static SKBitmap fresh_14_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_14_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_14_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_14_lv3 {
+        public static SKBitmap fresh_14_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_14_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_14_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_15_lv1 {
+        public static SKBitmap fresh_15_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_15_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_15_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_15_lv2 {
+        public static SKBitmap fresh_15_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_15_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_15_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_15_lv3 {
+        public static SKBitmap fresh_15_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_15_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_15_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_16_lv1 {
+        public static SKBitmap fresh_16_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_16_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_16_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_16_lv2 {
+        public static SKBitmap fresh_16_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_16_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_16_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_16_lv3 {
+        public static SKBitmap fresh_16_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_16_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_16_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_17_lv1 {
+        public static SKBitmap fresh_17_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_17_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_17_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_17_lv2 {
+        public static SKBitmap fresh_17_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_17_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_17_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_17_lv3 {
+        public static SKBitmap fresh_17_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_17_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_17_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_18_lv1 {
+        public static SKBitmap fresh_18_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_18_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_18_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_18_lv2 {
+        public static SKBitmap fresh_18_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_18_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_18_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_18_lv3 {
+        public static SKBitmap fresh_18_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_18_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_18_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_19_lv1 {
+        public static SKBitmap fresh_19_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_19_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_19_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_19_lv2 {
+        public static SKBitmap fresh_19_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_19_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_19_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_19_lv3 {
+        public static SKBitmap fresh_19_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_19_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_19_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_20_lv1 {
+        public static SKBitmap fresh_20_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_20_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_20_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_20_lv2 {
+        public static SKBitmap fresh_20_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_20_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_20_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_20_lv3 {
+        public static SKBitmap fresh_20_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_20_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_20_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_21_lv1 {
+        public static SKBitmap fresh_21_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_21_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_21_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_21_lv2 {
+        public static SKBitmap fresh_21_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_21_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_21_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_21_lv3 {
+        public static SKBitmap fresh_21_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_21_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_21_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_22_lv1 {
+        public static SKBitmap fresh_22_lv1 {
             get {
-                object obj = ResourceManager.GetObject("fresh_22_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_22_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_22_lv2 {
+        public static SKBitmap fresh_22_lv2 {
             get {
-                object obj = ResourceManager.GetObject("fresh_22_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_22_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fresh_22_lv3 {
+        public static SKBitmap fresh_22_lv3 {
             get {
-                object obj = ResourceManager.GetObject("fresh_22_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("fresh_22_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_00 {
+        public static SKBitmap gem_00 {
             get {
-                object obj = ResourceManager.GetObject("gem_00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_01 {
+        public static SKBitmap gem_01 {
             get {
-                object obj = ResourceManager.GetObject("gem_01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_02 {
+        public static SKBitmap gem_02 {
             get {
-                object obj = ResourceManager.GetObject("gem_02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_03 {
+        public static SKBitmap gem_03 {
             get {
-                object obj = ResourceManager.GetObject("gem_03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_04 {
+        public static SKBitmap gem_04 {
             get {
-                object obj = ResourceManager.GetObject("gem_04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_05 {
+        public static SKBitmap gem_05 {
             get {
-                object obj = ResourceManager.GetObject("gem_05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_06 {
+        public static SKBitmap gem_06 {
             get {
-                object obj = ResourceManager.GetObject("gem_06", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_06");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_07 {
+        public static SKBitmap gem_07 {
             get {
-                object obj = ResourceManager.GetObject("gem_07", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_07");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_08 {
+        public static SKBitmap gem_08 {
             get {
-                object obj = ResourceManager.GetObject("gem_08", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_08");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_09 {
+        public static SKBitmap gem_09 {
             get {
-                object obj = ResourceManager.GetObject("gem_09", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_09");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_10 {
+        public static SKBitmap gem_10 {
             get {
-                object obj = ResourceManager.GetObject("gem_10", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_10");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_11 {
+        public static SKBitmap gem_11 {
             get {
-                object obj = ResourceManager.GetObject("gem_11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_11");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_12 {
+        public static SKBitmap gem_12 {
             get {
-                object obj = ResourceManager.GetObject("gem_12", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_12");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_13 {
+        public static SKBitmap gem_13 {
             get {
-                object obj = ResourceManager.GetObject("gem_13", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_13");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_14 {
+        public static SKBitmap gem_14 {
             get {
-                object obj = ResourceManager.GetObject("gem_14", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_14");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_15 {
+        public static SKBitmap gem_15 {
             get {
-                object obj = ResourceManager.GetObject("gem_15", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_15");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_16 {
+        public static SKBitmap gem_16 {
             get {
-                object obj = ResourceManager.GetObject("gem_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_16");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_17 {
+        public static SKBitmap gem_17 {
             get {
-                object obj = ResourceManager.GetObject("gem_17", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_17");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap gem_99 {
+        public static SKBitmap gem_99 {
             get {
-                object obj = ResourceManager.GetObject("gem_99", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("gem_99");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonability {
+        public static SKBitmap ribbonability {
             get {
-                object obj = ResourceManager.GetObject("ribbonability", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonability");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonabilitydouble {
+        public static SKBitmap ribbonabilitydouble {
             get {
-                object obj = ResourceManager.GetObject("ribbonabilitydouble", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonabilitydouble");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonabilitygreat {
+        public static SKBitmap ribbonabilitygreat {
             get {
-                object obj = ResourceManager.GetObject("ribbonabilitygreat", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonabilitygreat");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonabilitymulti {
+        public static SKBitmap ribbonabilitymulti {
             get {
-                object obj = ResourceManager.GetObject("ribbonabilitymulti", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonabilitymulti");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonabilitypair {
+        public static SKBitmap ribbonabilitypair {
             get {
-                object obj = ResourceManager.GetObject("ribbonabilitypair", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonabilitypair");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonabilityworld {
+        public static SKBitmap ribbonabilityworld {
             get {
-                object obj = ResourceManager.GetObject("ribbonabilityworld", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonabilityworld");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonalert {
+        public static SKBitmap ribbonalert {
             get {
-                object obj = ResourceManager.GetObject("ribbonalert", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonalert");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonartist {
+        public static SKBitmap ribbonartist {
             get {
-                object obj = ResourceManager.GetObject("ribbonartist", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonartist");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonbattlerexpert {
+        public static SKBitmap ribbonbattlerexpert {
             get {
-                object obj = ResourceManager.GetObject("ribbonbattlerexpert", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonbattlerexpert");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonbattleroyale {
+        public static SKBitmap ribbonbattleroyale {
             get {
-                object obj = ResourceManager.GetObject("ribbonbattleroyale", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonbattleroyale");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonbattlerskillful {
+        public static SKBitmap ribbonbattlerskillful {
             get {
-                object obj = ResourceManager.GetObject("ribbonbattlerskillful", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonbattlerskillful");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonbattletreegreat {
+        public static SKBitmap ribbonbattletreegreat {
             get {
-                object obj = ResourceManager.GetObject("ribbonbattletreegreat", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonbattletreegreat");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonbattletreemaster {
+        public static SKBitmap ribbonbattletreemaster {
             get {
-                object obj = ResourceManager.GetObject("ribbonbattletreemaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonbattletreemaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonbestfriends {
+        public static SKBitmap ribbonbestfriends {
             get {
-                object obj = ResourceManager.GetObject("ribbonbestfriends", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonbestfriends");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonbirthday {
+        public static SKBitmap ribbonbirthday {
             get {
-                object obj = ResourceManager.GetObject("ribbonbirthday", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonbirthday");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribboncareless {
+        public static SKBitmap ribboncareless {
             get {
-                object obj = ResourceManager.GetObject("ribboncareless", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribboncareless");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampionalola {
+        public static SKBitmap ribbonchampionalola {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampionalola", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampionalola");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampionbattle {
+        public static SKBitmap ribbonchampionbattle {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampionbattle", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampionbattle");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampiong3 {
+        public static SKBitmap ribbonchampiong3 {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampiong3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampiong3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampiong6hoenn {
+        public static SKBitmap ribbonchampiong6hoenn {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampiong6hoenn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampiong6hoenn");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampiongalar {
+        public static SKBitmap ribbonchampiongalar {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampiongalar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampiongalar");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampionkalos {
+        public static SKBitmap ribbonchampionkalos {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampionkalos", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampionkalos");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampionnational {
+        public static SKBitmap ribbonchampionnational {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampionnational", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampionnational");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampionpaldea {
+        public static SKBitmap ribbonchampionpaldea {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampionpaldea", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampionpaldea");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampionregional {
+        public static SKBitmap ribbonchampionregional {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampionregional", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampionregional");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampionsinnoh {
+        public static SKBitmap ribbonchampionsinnoh {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampionsinnoh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampionsinnoh");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonchampionworld {
+        public static SKBitmap ribbonchampionworld {
             get {
-                object obj = ResourceManager.GetObject("ribbonchampionworld", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonchampionworld");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonclassic {
+        public static SKBitmap ribbonclassic {
             get {
-                object obj = ResourceManager.GetObject("ribbonclassic", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonclassic");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonconteststar {
+        public static SKBitmap ribbonconteststar {
             get {
-                object obj = ResourceManager.GetObject("ribbonconteststar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonconteststar");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribboncountmemorybattle {
+        public static SKBitmap ribboncountmemorybattle {
             get {
-                object obj = ResourceManager.GetObject("ribboncountmemorybattle", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribboncountmemorybattle");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribboncountmemorybattle2 {
+        public static SKBitmap ribboncountmemorybattle2 {
             get {
-                object obj = ResourceManager.GetObject("ribboncountmemorybattle2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribboncountmemorybattle2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribboncountmemorycontest {
+        public static SKBitmap ribboncountmemorycontest {
             get {
-                object obj = ResourceManager.GetObject("ribboncountmemorycontest", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribboncountmemorycontest");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribboncountmemorycontest2 {
+        public static SKBitmap ribboncountmemorycontest2 {
             get {
-                object obj = ResourceManager.GetObject("ribboncountmemorycontest2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribboncountmemorycontest2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribboncountry {
+        public static SKBitmap ribboncountry {
             get {
-                object obj = ResourceManager.GetObject("ribboncountry", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribboncountry");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbondowncast {
+        public static SKBitmap ribbondowncast {
             get {
-                object obj = ResourceManager.GetObject("ribbondowncast", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbondowncast");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonearth {
+        public static SKBitmap ribbonearth {
             get {
-                object obj = ResourceManager.GetObject("ribbonearth", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonearth");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribboneffort {
+        public static SKBitmap ribboneffort {
             get {
-                object obj = ResourceManager.GetObject("ribboneffort", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribboneffort");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonevent {
+        public static SKBitmap ribbonevent {
             get {
-                object obj = ResourceManager.GetObject("ribbonevent", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonevent");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonfootprint {
+        public static SKBitmap ribbonfootprint {
             get {
-                object obj = ResourceManager.GetObject("ribbonfootprint", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonfootprint");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3beauty {
+        public static SKBitmap ribbong3beauty {
             get {
-                object obj = ResourceManager.GetObject("ribbong3beauty", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3beauty");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3beautyhyper {
+        public static SKBitmap ribbong3beautyhyper {
             get {
-                object obj = ResourceManager.GetObject("ribbong3beautyhyper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3beautyhyper");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3beautymaster {
+        public static SKBitmap ribbong3beautymaster {
             get {
-                object obj = ResourceManager.GetObject("ribbong3beautymaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3beautymaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3beautysuper {
+        public static SKBitmap ribbong3beautysuper {
             get {
-                object obj = ResourceManager.GetObject("ribbong3beautysuper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3beautysuper");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3cool {
+        public static SKBitmap ribbong3cool {
             get {
-                object obj = ResourceManager.GetObject("ribbong3cool", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3cool");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3coolhyper {
+        public static SKBitmap ribbong3coolhyper {
             get {
-                object obj = ResourceManager.GetObject("ribbong3coolhyper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3coolhyper");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3coolmaster {
+        public static SKBitmap ribbong3coolmaster {
             get {
-                object obj = ResourceManager.GetObject("ribbong3coolmaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3coolmaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3coolsuper {
+        public static SKBitmap ribbong3coolsuper {
             get {
-                object obj = ResourceManager.GetObject("ribbong3coolsuper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3coolsuper");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3cute {
+        public static SKBitmap ribbong3cute {
             get {
-                object obj = ResourceManager.GetObject("ribbong3cute", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3cute");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3cutehyper {
+        public static SKBitmap ribbong3cutehyper {
             get {
-                object obj = ResourceManager.GetObject("ribbong3cutehyper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3cutehyper");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3cutemaster {
+        public static SKBitmap ribbong3cutemaster {
             get {
-                object obj = ResourceManager.GetObject("ribbong3cutemaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3cutemaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3cutesuper {
+        public static SKBitmap ribbong3cutesuper {
             get {
-                object obj = ResourceManager.GetObject("ribbong3cutesuper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3cutesuper");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3smart {
+        public static SKBitmap ribbong3smart {
             get {
-                object obj = ResourceManager.GetObject("ribbong3smart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3smart");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3smarthyper {
+        public static SKBitmap ribbong3smarthyper {
             get {
-                object obj = ResourceManager.GetObject("ribbong3smarthyper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3smarthyper");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3smartmaster {
+        public static SKBitmap ribbong3smartmaster {
             get {
-                object obj = ResourceManager.GetObject("ribbong3smartmaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3smartmaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3smartsuper {
+        public static SKBitmap ribbong3smartsuper {
             get {
-                object obj = ResourceManager.GetObject("ribbong3smartsuper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3smartsuper");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3tough {
+        public static SKBitmap ribbong3tough {
             get {
-                object obj = ResourceManager.GetObject("ribbong3tough", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3tough");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3toughhyper {
+        public static SKBitmap ribbong3toughhyper {
             get {
-                object obj = ResourceManager.GetObject("ribbong3toughhyper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3toughhyper");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3toughmaster {
+        public static SKBitmap ribbong3toughmaster {
             get {
-                object obj = ResourceManager.GetObject("ribbong3toughmaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3toughmaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong3toughsuper {
+        public static SKBitmap ribbong3toughsuper {
             get {
-                object obj = ResourceManager.GetObject("ribbong3toughsuper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong3toughsuper");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4beauty {
+        public static SKBitmap ribbong4beauty {
             get {
-                object obj = ResourceManager.GetObject("ribbong4beauty", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4beauty");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4beautygreat {
+        public static SKBitmap ribbong4beautygreat {
             get {
-                object obj = ResourceManager.GetObject("ribbong4beautygreat", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4beautygreat");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4beautymaster {
+        public static SKBitmap ribbong4beautymaster {
             get {
-                object obj = ResourceManager.GetObject("ribbong4beautymaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4beautymaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4beautyultra {
+        public static SKBitmap ribbong4beautyultra {
             get {
-                object obj = ResourceManager.GetObject("ribbong4beautyultra", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4beautyultra");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4cool {
+        public static SKBitmap ribbong4cool {
             get {
-                object obj = ResourceManager.GetObject("ribbong4cool", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4cool");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4coolgreat {
+        public static SKBitmap ribbong4coolgreat {
             get {
-                object obj = ResourceManager.GetObject("ribbong4coolgreat", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4coolgreat");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4coolmaster {
+        public static SKBitmap ribbong4coolmaster {
             get {
-                object obj = ResourceManager.GetObject("ribbong4coolmaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4coolmaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4coolultra {
+        public static SKBitmap ribbong4coolultra {
             get {
-                object obj = ResourceManager.GetObject("ribbong4coolultra", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4coolultra");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4cute {
+        public static SKBitmap ribbong4cute {
             get {
-                object obj = ResourceManager.GetObject("ribbong4cute", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4cute");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4cutegreat {
+        public static SKBitmap ribbong4cutegreat {
             get {
-                object obj = ResourceManager.GetObject("ribbong4cutegreat", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4cutegreat");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4cutemaster {
+        public static SKBitmap ribbong4cutemaster {
             get {
-                object obj = ResourceManager.GetObject("ribbong4cutemaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4cutemaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4cuteultra {
+        public static SKBitmap ribbong4cuteultra {
             get {
-                object obj = ResourceManager.GetObject("ribbong4cuteultra", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4cuteultra");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4smart {
+        public static SKBitmap ribbong4smart {
             get {
-                object obj = ResourceManager.GetObject("ribbong4smart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4smart");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4smartgreat {
+        public static SKBitmap ribbong4smartgreat {
             get {
-                object obj = ResourceManager.GetObject("ribbong4smartgreat", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4smartgreat");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4smartmaster {
+        public static SKBitmap ribbong4smartmaster {
             get {
-                object obj = ResourceManager.GetObject("ribbong4smartmaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4smartmaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4smartultra {
+        public static SKBitmap ribbong4smartultra {
             get {
-                object obj = ResourceManager.GetObject("ribbong4smartultra", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4smartultra");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4tough {
+        public static SKBitmap ribbong4tough {
             get {
-                object obj = ResourceManager.GetObject("ribbong4tough", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4tough");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4toughgreat {
+        public static SKBitmap ribbong4toughgreat {
             get {
-                object obj = ResourceManager.GetObject("ribbong4toughgreat", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4toughgreat");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4toughmaster {
+        public static SKBitmap ribbong4toughmaster {
             get {
-                object obj = ResourceManager.GetObject("ribbong4toughmaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4toughmaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbong4toughultra {
+        public static SKBitmap ribbong4toughultra {
             get {
-                object obj = ResourceManager.GetObject("ribbong4toughultra", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbong4toughultra");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbongorgeous {
+        public static SKBitmap ribbongorgeous {
             get {
-                object obj = ResourceManager.GetObject("ribbongorgeous", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbongorgeous");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbongorgeousroyal {
+        public static SKBitmap ribbongorgeousroyal {
             get {
-                object obj = ResourceManager.GetObject("ribbongorgeousroyal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbongorgeousroyal");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonhisui {
+        public static SKBitmap ribbonhisui {
             get {
-                object obj = ResourceManager.GetObject("ribbonhisui", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonhisui");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonlegend {
+        public static SKBitmap ribbonlegend {
             get {
-                object obj = ResourceManager.GetObject("ribbonlegend", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonlegend");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkabsentminded {
+        public static SKBitmap ribbonmarkabsentminded {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkabsentminded", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkabsentminded");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkalpha {
+        public static SKBitmap ribbonmarkalpha {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkalpha", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkalpha");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkangry {
+        public static SKBitmap ribbonmarkangry {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkangry", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkangry");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkblizzard {
+        public static SKBitmap ribbonmarkblizzard {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkblizzard", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkblizzard");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkcalmness {
+        public static SKBitmap ribbonmarkcalmness {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkcalmness", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkcalmness");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkcharismatic {
+        public static SKBitmap ribbonmarkcharismatic {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkcharismatic", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkcharismatic");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkcloudy {
+        public static SKBitmap ribbonmarkcloudy {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkcloudy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkcloudy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkcrafty {
+        public static SKBitmap ribbonmarkcrafty {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkcrafty", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkcrafty");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkcurry {
+        public static SKBitmap ribbonmarkcurry {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkcurry", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkcurry");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkdawn {
+        public static SKBitmap ribbonmarkdawn {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkdawn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkdawn");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkdestiny {
+        public static SKBitmap ribbonmarkdestiny {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkdestiny", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkdestiny");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkdry {
+        public static SKBitmap ribbonmarkdry {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkdry", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkdry");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkdusk {
+        public static SKBitmap ribbonmarkdusk {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkdusk", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkdusk");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkexcited {
+        public static SKBitmap ribbonmarkexcited {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkexcited", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkexcited");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkferocious {
+        public static SKBitmap ribbonmarkferocious {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkferocious", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkferocious");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkfishing {
+        public static SKBitmap ribbonmarkfishing {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkfishing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkfishing");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkflustered {
+        public static SKBitmap ribbonmarkflustered {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkflustered", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkflustered");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkgourmand {
+        public static SKBitmap ribbonmarkgourmand {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkgourmand", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkgourmand");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkhumble {
+        public static SKBitmap ribbonmarkhumble {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkhumble", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkhumble");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkintellectual {
+        public static SKBitmap ribbonmarkintellectual {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkintellectual", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkintellectual");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkintense {
+        public static SKBitmap ribbonmarkintense {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkintense", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkintense");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkitemfinder {
+        public static SKBitmap ribbonmarkitemfinder {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkitemfinder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkitemfinder");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkjittery {
+        public static SKBitmap ribbonmarkjittery {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkjittery", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkjittery");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkjoyful {
+        public static SKBitmap ribbonmarkjoyful {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkjoyful", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkjoyful");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkjumbo {
+        public static SKBitmap ribbonmarkjumbo {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkjumbo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkjumbo");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkkindly {
+        public static SKBitmap ribbonmarkkindly {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkkindly", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkkindly");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarklunchtime {
+        public static SKBitmap ribbonmarklunchtime {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarklunchtime", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarklunchtime");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkmightiest {
+        public static SKBitmap ribbonmarkmightiest {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkmightiest", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkmightiest");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkmini {
+        public static SKBitmap ribbonmarkmini {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkmini", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkmini");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkmisty {
+        public static SKBitmap ribbonmarkmisty {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkmisty", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkmisty");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkpartner {
+        public static SKBitmap ribbonmarkpartner {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkpartner", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkpartner");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkpeeved {
+        public static SKBitmap ribbonmarkpeeved {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkpeeved", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkpeeved");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkprideful {
+        public static SKBitmap ribbonmarkprideful {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkprideful", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkprideful");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkpumpedup {
+        public static SKBitmap ribbonmarkpumpedup {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkpumpedup", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkpumpedup");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkrainy {
+        public static SKBitmap ribbonmarkrainy {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkrainy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkrainy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkrare {
+        public static SKBitmap ribbonmarkrare {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkrare", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkrare");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkrowdy {
+        public static SKBitmap ribbonmarkrowdy {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkrowdy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkrowdy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarksandstorm {
+        public static SKBitmap ribbonmarksandstorm {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarksandstorm", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarksandstorm");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkscowling {
+        public static SKBitmap ribbonmarkscowling {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkscowling", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkscowling");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarksleepytime {
+        public static SKBitmap ribbonmarksleepytime {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarksleepytime", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarksleepytime");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkslump {
+        public static SKBitmap ribbonmarkslump {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkslump", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkslump");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarksmiley {
+        public static SKBitmap ribbonmarksmiley {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarksmiley", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarksmiley");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarksnowy {
+        public static SKBitmap ribbonmarksnowy {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarksnowy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarksnowy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkstormy {
+        public static SKBitmap ribbonmarkstormy {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkstormy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkstormy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkteary {
+        public static SKBitmap ribbonmarkteary {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkteary", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkteary");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkthorny {
+        public static SKBitmap ribbonmarkthorny {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkthorny", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkthorny");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarktitan {
+        public static SKBitmap ribbonmarktitan {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarktitan", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarktitan");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkuncommon {
+        public static SKBitmap ribbonmarkuncommon {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkuncommon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkuncommon");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkunsure {
+        public static SKBitmap ribbonmarkunsure {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkunsure", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkunsure");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkupbeat {
+        public static SKBitmap ribbonmarkupbeat {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkupbeat", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkupbeat");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkvigor {
+        public static SKBitmap ribbonmarkvigor {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkvigor", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkvigor");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkzeroenergy {
+        public static SKBitmap ribbonmarkzeroenergy {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkzeroenergy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkzeroenergy");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmarkzonedout {
+        public static SKBitmap ribbonmarkzonedout {
             get {
-                object obj = ResourceManager.GetObject("ribbonmarkzonedout", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmarkzonedout");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmasterbeauty {
+        public static SKBitmap ribbonmasterbeauty {
             get {
-                object obj = ResourceManager.GetObject("ribbonmasterbeauty", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmasterbeauty");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmastercleverness {
+        public static SKBitmap ribbonmastercleverness {
             get {
-                object obj = ResourceManager.GetObject("ribbonmastercleverness", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmastercleverness");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmastercoolness {
+        public static SKBitmap ribbonmastercoolness {
             get {
-                object obj = ResourceManager.GetObject("ribbonmastercoolness", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmastercoolness");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmastercuteness {
+        public static SKBitmap ribbonmastercuteness {
             get {
-                object obj = ResourceManager.GetObject("ribbonmastercuteness", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmastercuteness");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmasterrank {
+        public static SKBitmap ribbonmasterrank {
             get {
-                object obj = ResourceManager.GetObject("ribbonmasterrank", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmasterrank");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonmastertoughness {
+        public static SKBitmap ribbonmastertoughness {
             get {
-                object obj = ResourceManager.GetObject("ribbonmastertoughness", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonmastertoughness");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonnational {
+        public static SKBitmap ribbonnational {
             get {
-                object obj = ResourceManager.GetObject("ribbonnational", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonnational");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbononceinalifetime {
+        public static SKBitmap ribbononceinalifetime {
             get {
-                object obj = ResourceManager.GetObject("ribbononceinalifetime", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbononceinalifetime");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonpartner {
+        public static SKBitmap ribbonpartner {
             get {
-                object obj = ResourceManager.GetObject("ribbonpartner", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonpartner");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonpremier {
+        public static SKBitmap ribbonpremier {
             get {
-                object obj = ResourceManager.GetObject("ribbonpremier", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonpremier");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonrecord {
+        public static SKBitmap ribbonrecord {
             get {
-                object obj = ResourceManager.GetObject("ribbonrecord", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonrecord");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonrelax {
+        public static SKBitmap ribbonrelax {
             get {
-                object obj = ResourceManager.GetObject("ribbonrelax", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonrelax");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonroyal {
+        public static SKBitmap ribbonroyal {
             get {
-                object obj = ResourceManager.GetObject("ribbonroyal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonroyal");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonshock {
+        public static SKBitmap ribbonshock {
             get {
-                object obj = ResourceManager.GetObject("ribbonshock", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonshock");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonsmile {
+        public static SKBitmap ribbonsmile {
             get {
-                object obj = ResourceManager.GetObject("ribbonsmile", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonsmile");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonsnooze {
+        public static SKBitmap ribbonsnooze {
             get {
-                object obj = ResourceManager.GetObject("ribbonsnooze", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonsnooze");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonsouvenir {
+        public static SKBitmap ribbonsouvenir {
             get {
-                object obj = ResourceManager.GetObject("ribbonsouvenir", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonsouvenir");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonspecial {
+        public static SKBitmap ribbonspecial {
             get {
-                object obj = ResourceManager.GetObject("ribbonspecial", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonspecial");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbontowermaster {
+        public static SKBitmap ribbontowermaster {
             get {
-                object obj = ResourceManager.GetObject("ribbontowermaster", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbontowermaster");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbontraining {
+        public static SKBitmap ribbontraining {
             get {
-                object obj = ResourceManager.GetObject("ribbontraining", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbontraining");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbontwinklingstar {
+        public static SKBitmap ribbontwinklingstar {
             get {
-                object obj = ResourceManager.GetObject("ribbontwinklingstar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbontwinklingstar");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonvictory {
+        public static SKBitmap ribbonvictory {
             get {
-                object obj = ResourceManager.GetObject("ribbonvictory", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonvictory");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonwinning {
+        public static SKBitmap ribbonwinning {
             get {
-                object obj = ResourceManager.GetObject("ribbonwinning", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonwinning");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonwishing {
+        public static SKBitmap ribbonwishing {
             get {
-                object obj = ResourceManager.GetObject("ribbonwishing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonwishing");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ribbonworld {
+        public static SKBitmap ribbonworld {
             get {
-                object obj = ResourceManager.GetObject("ribbonworld", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("ribbonworld");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_01_lv1 {
+        public static SKBitmap sour_01_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sour_01_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_01_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_01_lv2 {
+        public static SKBitmap sour_01_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sour_01_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_01_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_01_lv3 {
+        public static SKBitmap sour_01_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sour_01_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_01_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_02_lv1 {
+        public static SKBitmap sour_02_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sour_02_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_02_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_02_lv2 {
+        public static SKBitmap sour_02_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sour_02_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_02_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_02_lv3 {
+        public static SKBitmap sour_02_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sour_02_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_02_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_03_lv1 {
+        public static SKBitmap sour_03_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sour_03_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_03_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_03_lv2 {
+        public static SKBitmap sour_03_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sour_03_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_03_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_03_lv3 {
+        public static SKBitmap sour_03_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sour_03_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_03_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_04_lv1 {
+        public static SKBitmap sour_04_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sour_04_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_04_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_04_lv2 {
+        public static SKBitmap sour_04_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sour_04_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_04_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_04_lv3 {
+        public static SKBitmap sour_04_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sour_04_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_04_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_05_lv1 {
+        public static SKBitmap sour_05_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sour_05_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_05_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_05_lv2 {
+        public static SKBitmap sour_05_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sour_05_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_05_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_05_lv3 {
+        public static SKBitmap sour_05_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sour_05_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_05_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_06_lv1 {
+        public static SKBitmap sour_06_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sour_06_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_06_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_06_lv2 {
+        public static SKBitmap sour_06_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sour_06_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_06_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_06_lv3 {
+        public static SKBitmap sour_06_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sour_06_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_06_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_07_lv1 {
+        public static SKBitmap sour_07_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sour_07_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_07_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_07_lv2 {
+        public static SKBitmap sour_07_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sour_07_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_07_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_07_lv3 {
+        public static SKBitmap sour_07_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sour_07_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_07_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_10_lv1 {
+        public static SKBitmap sour_10_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sour_10_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_10_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_10_lv2 {
+        public static SKBitmap sour_10_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sour_10_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_10_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_10_lv3 {
+        public static SKBitmap sour_10_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sour_10_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_10_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_11_lv1 {
+        public static SKBitmap sour_11_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sour_11_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_11_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_11_lv2 {
+        public static SKBitmap sour_11_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sour_11_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_11_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sour_11_lv3 {
+        public static SKBitmap sour_11_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sour_11_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sour_11_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sp_01 {
+        public static SKBitmap sp_01 {
             get {
-                object obj = ResourceManager.GetObject("sp_01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sp_01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sp_02 {
+        public static SKBitmap sp_02 {
             get {
-                object obj = ResourceManager.GetObject("sp_02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sp_02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sp_03 {
+        public static SKBitmap sp_03 {
             get {
-                object obj = ResourceManager.GetObject("sp_03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sp_03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sp_04 {
+        public static SKBitmap sp_04 {
             get {
-                object obj = ResourceManager.GetObject("sp_04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sp_04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sp_05 {
+        public static SKBitmap sp_05 {
             get {
-                object obj = ResourceManager.GetObject("sp_05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sp_05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_01_lv1 {
+        public static SKBitmap spicy_01_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_01_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_01_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_01_lv2 {
+        public static SKBitmap spicy_01_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_01_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_01_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_01_lv3 {
+        public static SKBitmap spicy_01_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_01_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_01_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_02_lv1 {
+        public static SKBitmap spicy_02_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_02_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_02_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_02_lv2 {
+        public static SKBitmap spicy_02_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_02_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_02_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_02_lv3 {
+        public static SKBitmap spicy_02_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_02_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_02_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_03_lv1 {
+        public static SKBitmap spicy_03_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_03_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_03_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_03_lv2 {
+        public static SKBitmap spicy_03_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_03_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_03_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_03_lv3 {
+        public static SKBitmap spicy_03_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_03_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_03_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_04_lv1 {
+        public static SKBitmap spicy_04_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_04_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_04_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_04_lv2 {
+        public static SKBitmap spicy_04_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_04_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_04_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_04_lv3 {
+        public static SKBitmap spicy_04_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_04_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_04_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_05_lv1 {
+        public static SKBitmap spicy_05_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_05_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_05_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_05_lv2 {
+        public static SKBitmap spicy_05_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_05_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_05_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_05_lv3 {
+        public static SKBitmap spicy_05_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_05_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_05_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_06_lv1 {
+        public static SKBitmap spicy_06_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_06_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_06_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_06_lv2 {
+        public static SKBitmap spicy_06_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_06_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_06_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_06_lv3 {
+        public static SKBitmap spicy_06_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_06_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_06_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_07_lv1 {
+        public static SKBitmap spicy_07_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_07_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_07_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_07_lv2 {
+        public static SKBitmap spicy_07_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_07_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_07_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_07_lv3 {
+        public static SKBitmap spicy_07_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_07_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_07_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_08_lv1 {
+        public static SKBitmap spicy_08_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_08_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_08_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_08_lv2 {
+        public static SKBitmap spicy_08_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_08_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_08_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_08_lv3 {
+        public static SKBitmap spicy_08_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_08_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_08_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_09_lv1 {
+        public static SKBitmap spicy_09_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_09_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_09_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_09_lv2 {
+        public static SKBitmap spicy_09_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_09_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_09_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_09_lv3 {
+        public static SKBitmap spicy_09_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_09_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_09_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_10_lv1 {
+        public static SKBitmap spicy_10_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_10_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_10_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_10_lv2 {
+        public static SKBitmap spicy_10_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_10_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_10_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_10_lv3 {
+        public static SKBitmap spicy_10_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_10_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_10_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_11_lv1 {
+        public static SKBitmap spicy_11_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_11_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_11_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_11_lv2 {
+        public static SKBitmap spicy_11_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_11_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_11_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_11_lv3 {
+        public static SKBitmap spicy_11_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_11_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_11_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_12_lv1 {
+        public static SKBitmap spicy_12_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_12_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_12_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_12_lv2 {
+        public static SKBitmap spicy_12_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_12_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_12_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_12_lv3 {
+        public static SKBitmap spicy_12_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_12_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_12_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_13_lv1 {
+        public static SKBitmap spicy_13_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_13_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_13_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_13_lv2 {
+        public static SKBitmap spicy_13_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_13_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_13_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_13_lv3 {
+        public static SKBitmap spicy_13_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_13_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_13_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_14_lv1 {
+        public static SKBitmap spicy_14_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_14_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_14_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_14_lv2 {
+        public static SKBitmap spicy_14_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_14_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_14_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_14_lv3 {
+        public static SKBitmap spicy_14_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_14_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_14_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_15_lv1 {
+        public static SKBitmap spicy_15_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_15_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_15_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_15_lv2 {
+        public static SKBitmap spicy_15_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_15_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_15_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_15_lv3 {
+        public static SKBitmap spicy_15_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_15_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_15_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_16_lv1 {
+        public static SKBitmap spicy_16_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_16_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_16_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_16_lv2 {
+        public static SKBitmap spicy_16_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_16_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_16_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_16_lv3 {
+        public static SKBitmap spicy_16_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_16_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_16_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_17_lv1 {
+        public static SKBitmap spicy_17_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_17_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_17_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_17_lv2 {
+        public static SKBitmap spicy_17_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_17_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_17_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_17_lv3 {
+        public static SKBitmap spicy_17_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_17_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_17_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_18_lv1 {
+        public static SKBitmap spicy_18_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_18_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_18_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_18_lv2 {
+        public static SKBitmap spicy_18_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_18_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_18_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_18_lv3 {
+        public static SKBitmap spicy_18_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_18_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_18_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_19_lv1 {
+        public static SKBitmap spicy_19_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_19_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_19_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_19_lv2 {
+        public static SKBitmap spicy_19_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_19_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_19_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_19_lv3 {
+        public static SKBitmap spicy_19_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_19_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_19_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_20_lv1 {
+        public static SKBitmap spicy_20_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_20_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_20_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_20_lv2 {
+        public static SKBitmap spicy_20_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_20_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_20_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_20_lv3 {
+        public static SKBitmap spicy_20_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_20_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_20_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_21_lv1 {
+        public static SKBitmap spicy_21_lv1 {
             get {
-                object obj = ResourceManager.GetObject("spicy_21_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_21_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_21_lv2 {
+        public static SKBitmap spicy_21_lv2 {
             get {
-                object obj = ResourceManager.GetObject("spicy_21_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_21_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap spicy_21_lv3 {
+        public static SKBitmap spicy_21_lv3 {
             get {
-                object obj = ResourceManager.GetObject("spicy_21_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("spicy_21_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap star {
+        public static SKBitmap star {
             get {
-                object obj = ResourceManager.GetObject("star", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("star");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_01_lv1 {
+        public static SKBitmap sweet_01_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_01_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_01_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_01_lv2 {
+        public static SKBitmap sweet_01_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_01_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_01_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_01_lv3 {
+        public static SKBitmap sweet_01_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_01_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_01_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_03_lv1 {
+        public static SKBitmap sweet_03_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_03_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_03_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_03_lv2 {
+        public static SKBitmap sweet_03_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_03_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_03_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_03_lv3 {
+        public static SKBitmap sweet_03_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_03_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_03_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_04_lv1 {
+        public static SKBitmap sweet_04_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_04_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_04_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_04_lv2 {
+        public static SKBitmap sweet_04_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_04_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_04_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_04_lv3 {
+        public static SKBitmap sweet_04_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_04_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_04_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_05_lv1 {
+        public static SKBitmap sweet_05_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_05_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_05_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_05_lv2 {
+        public static SKBitmap sweet_05_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_05_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_05_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_05_lv3 {
+        public static SKBitmap sweet_05_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_05_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_05_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_06_lv1 {
+        public static SKBitmap sweet_06_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_06_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_06_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_06_lv2 {
+        public static SKBitmap sweet_06_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_06_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_06_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_06_lv3 {
+        public static SKBitmap sweet_06_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_06_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_06_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_07_lv1 {
+        public static SKBitmap sweet_07_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_07_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_07_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_07_lv2 {
+        public static SKBitmap sweet_07_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_07_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_07_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_07_lv3 {
+        public static SKBitmap sweet_07_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_07_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_07_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_08_lv1 {
+        public static SKBitmap sweet_08_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_08_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_08_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_08_lv2 {
+        public static SKBitmap sweet_08_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_08_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_08_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_08_lv3 {
+        public static SKBitmap sweet_08_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_08_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_08_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_09_lv1 {
+        public static SKBitmap sweet_09_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_09_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_09_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_09_lv2 {
+        public static SKBitmap sweet_09_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_09_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_09_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_09_lv3 {
+        public static SKBitmap sweet_09_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_09_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_09_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_10_lv1 {
+        public static SKBitmap sweet_10_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_10_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_10_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_10_lv2 {
+        public static SKBitmap sweet_10_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_10_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_10_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_10_lv3 {
+        public static SKBitmap sweet_10_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_10_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_10_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_11_lv1 {
+        public static SKBitmap sweet_11_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_11_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_11_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_11_lv2 {
+        public static SKBitmap sweet_11_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_11_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_11_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_11_lv3 {
+        public static SKBitmap sweet_11_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_11_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_11_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_12_lv1 {
+        public static SKBitmap sweet_12_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_12_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_12_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_12_lv2 {
+        public static SKBitmap sweet_12_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_12_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_12_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_12_lv3 {
+        public static SKBitmap sweet_12_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_12_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_12_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_13_lv1 {
+        public static SKBitmap sweet_13_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_13_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_13_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_13_lv2 {
+        public static SKBitmap sweet_13_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_13_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_13_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_13_lv3 {
+        public static SKBitmap sweet_13_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_13_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_13_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_14_lv1 {
+        public static SKBitmap sweet_14_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_14_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_14_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_14_lv2 {
+        public static SKBitmap sweet_14_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_14_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_14_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_14_lv3 {
+        public static SKBitmap sweet_14_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_14_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_14_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_15_lv1 {
+        public static SKBitmap sweet_15_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_15_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_15_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_15_lv2 {
+        public static SKBitmap sweet_15_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_15_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_15_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_15_lv3 {
+        public static SKBitmap sweet_15_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_15_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_15_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_16_lv1 {
+        public static SKBitmap sweet_16_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_16_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_16_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_16_lv2 {
+        public static SKBitmap sweet_16_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_16_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_16_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_16_lv3 {
+        public static SKBitmap sweet_16_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_16_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_16_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_17_lv1 {
+        public static SKBitmap sweet_17_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_17_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_17_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_17_lv2 {
+        public static SKBitmap sweet_17_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_17_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_17_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_17_lv3 {
+        public static SKBitmap sweet_17_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_17_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_17_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_18_lv1 {
+        public static SKBitmap sweet_18_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_18_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_18_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_18_lv2 {
+        public static SKBitmap sweet_18_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_18_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_18_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_18_lv3 {
+        public static SKBitmap sweet_18_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_18_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_18_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_19_lv1 {
+        public static SKBitmap sweet_19_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_19_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_19_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_19_lv2 {
+        public static SKBitmap sweet_19_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_19_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_19_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_19_lv3 {
+        public static SKBitmap sweet_19_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_19_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_19_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_20_lv1 {
+        public static SKBitmap sweet_20_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_20_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_20_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_20_lv2 {
+        public static SKBitmap sweet_20_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_20_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_20_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_20_lv3 {
+        public static SKBitmap sweet_20_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_20_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_20_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_21_lv1 {
+        public static SKBitmap sweet_21_lv1 {
             get {
-                object obj = ResourceManager.GetObject("sweet_21_lv1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_21_lv1");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_21_lv2 {
+        public static SKBitmap sweet_21_lv2 {
             get {
-                object obj = ResourceManager.GetObject("sweet_21_lv2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_21_lv2");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap sweet_21_lv3 {
+        public static SKBitmap sweet_21_lv3 {
             get {
-                object obj = ResourceManager.GetObject("sweet_21_lv3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("sweet_21_lv3");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_00 {
+        public static SKBitmap tr_00 {
             get {
-                object obj = ResourceManager.GetObject("tr_00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_01 {
+        public static SKBitmap tr_01 {
             get {
-                object obj = ResourceManager.GetObject("tr_01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_02 {
+        public static SKBitmap tr_02 {
             get {
-                object obj = ResourceManager.GetObject("tr_02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_03 {
+        public static SKBitmap tr_03 {
             get {
-                object obj = ResourceManager.GetObject("tr_03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_04 {
+        public static SKBitmap tr_04 {
             get {
-                object obj = ResourceManager.GetObject("tr_04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_05 {
+        public static SKBitmap tr_05 {
             get {
-                object obj = ResourceManager.GetObject("tr_05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_06 {
+        public static SKBitmap tr_06 {
             get {
-                object obj = ResourceManager.GetObject("tr_06", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_06");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_07 {
+        public static SKBitmap tr_07 {
             get {
-                object obj = ResourceManager.GetObject("tr_07", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_07");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_08 {
+        public static SKBitmap tr_08 {
             get {
-                object obj = ResourceManager.GetObject("tr_08", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_08");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_09 {
+        public static SKBitmap tr_09 {
             get {
-                object obj = ResourceManager.GetObject("tr_09", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_09");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_10 {
+        public static SKBitmap tr_10 {
             get {
-                object obj = ResourceManager.GetObject("tr_10", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_10");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_11 {
+        public static SKBitmap tr_11 {
             get {
-                object obj = ResourceManager.GetObject("tr_11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_11");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_12 {
+        public static SKBitmap tr_12 {
             get {
-                object obj = ResourceManager.GetObject("tr_12", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_12");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_128 {
+        public static SKBitmap tr_128 {
             get {
-                object obj = ResourceManager.GetObject("tr_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_128");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_129 {
+        public static SKBitmap tr_129 {
             get {
-                object obj = ResourceManager.GetObject("tr_129", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_129");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_13 {
+        public static SKBitmap tr_13 {
             get {
-                object obj = ResourceManager.GetObject("tr_13", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_13");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_14 {
+        public static SKBitmap tr_14 {
             get {
-                object obj = ResourceManager.GetObject("tr_14", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_14");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_15 {
+        public static SKBitmap tr_15 {
             get {
-                object obj = ResourceManager.GetObject("tr_15", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_15");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_16 {
+        public static SKBitmap tr_16 {
             get {
-                object obj = ResourceManager.GetObject("tr_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_16");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_17 {
+        public static SKBitmap tr_17 {
             get {
-                object obj = ResourceManager.GetObject("tr_17", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_17");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_18 {
+        public static SKBitmap tr_18 {
             get {
-                object obj = ResourceManager.GetObject("tr_18", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_18");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_19 {
+        public static SKBitmap tr_19 {
             get {
-                object obj = ResourceManager.GetObject("tr_19", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_19");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_20 {
+        public static SKBitmap tr_20 {
             get {
-                object obj = ResourceManager.GetObject("tr_20", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_20");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_21 {
+        public static SKBitmap tr_21 {
             get {
-                object obj = ResourceManager.GetObject("tr_21", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_21");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_22 {
+        public static SKBitmap tr_22 {
             get {
-                object obj = ResourceManager.GetObject("tr_22", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_22");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_23 {
+        public static SKBitmap tr_23 {
             get {
-                object obj = ResourceManager.GetObject("tr_23", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_23");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_24 {
+        public static SKBitmap tr_24 {
             get {
-                object obj = ResourceManager.GetObject("tr_24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_24");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_25 {
+        public static SKBitmap tr_25 {
             get {
-                object obj = ResourceManager.GetObject("tr_25", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_25");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_26 {
+        public static SKBitmap tr_26 {
             get {
-                object obj = ResourceManager.GetObject("tr_26", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_26");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_27 {
+        public static SKBitmap tr_27 {
             get {
-                object obj = ResourceManager.GetObject("tr_27", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_27");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_28 {
+        public static SKBitmap tr_28 {
             get {
-                object obj = ResourceManager.GetObject("tr_28", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_28");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_29 {
+        public static SKBitmap tr_29 {
             get {
-                object obj = ResourceManager.GetObject("tr_29", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_29");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_30 {
+        public static SKBitmap tr_30 {
             get {
-                object obj = ResourceManager.GetObject("tr_30", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_30");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_31 {
+        public static SKBitmap tr_31 {
             get {
-                object obj = ResourceManager.GetObject("tr_31", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_31");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_32 {
+        public static SKBitmap tr_32 {
             get {
-                object obj = ResourceManager.GetObject("tr_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_32");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_33 {
+        public static SKBitmap tr_33 {
             get {
-                object obj = ResourceManager.GetObject("tr_33", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_33");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_34 {
+        public static SKBitmap tr_34 {
             get {
-                object obj = ResourceManager.GetObject("tr_34", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_34");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_35 {
+        public static SKBitmap tr_35 {
             get {
-                object obj = ResourceManager.GetObject("tr_35", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_35");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_36 {
+        public static SKBitmap tr_36 {
             get {
-                object obj = ResourceManager.GetObject("tr_36", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_36");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_37 {
+        public static SKBitmap tr_37 {
             get {
-                object obj = ResourceManager.GetObject("tr_37", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_37");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_38 {
+        public static SKBitmap tr_38 {
             get {
-                object obj = ResourceManager.GetObject("tr_38", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_38");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_39 {
+        public static SKBitmap tr_39 {
             get {
-                object obj = ResourceManager.GetObject("tr_39", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_39");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_40 {
+        public static SKBitmap tr_40 {
             get {
-                object obj = ResourceManager.GetObject("tr_40", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_40");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_41 {
+        public static SKBitmap tr_41 {
             get {
-                object obj = ResourceManager.GetObject("tr_41", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_41");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_42 {
+        public static SKBitmap tr_42 {
             get {
-                object obj = ResourceManager.GetObject("tr_42", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_42");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_43 {
+        public static SKBitmap tr_43 {
             get {
-                object obj = ResourceManager.GetObject("tr_43", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_43");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_44 {
+        public static SKBitmap tr_44 {
             get {
-                object obj = ResourceManager.GetObject("tr_44", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_44");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_45 {
+        public static SKBitmap tr_45 {
             get {
-                object obj = ResourceManager.GetObject("tr_45", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_45");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_46 {
+        public static SKBitmap tr_46 {
             get {
-                object obj = ResourceManager.GetObject("tr_46", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_46");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_47 {
+        public static SKBitmap tr_47 {
             get {
-                object obj = ResourceManager.GetObject("tr_47", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_47");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_48 {
+        public static SKBitmap tr_48 {
             get {
-                object obj = ResourceManager.GetObject("tr_48", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_48");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_49 {
+        public static SKBitmap tr_49 {
             get {
-                object obj = ResourceManager.GetObject("tr_49", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_49");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_50 {
+        public static SKBitmap tr_50 {
             get {
-                object obj = ResourceManager.GetObject("tr_50", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_50");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_51 {
+        public static SKBitmap tr_51 {
             get {
-                object obj = ResourceManager.GetObject("tr_51", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_51");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_52 {
+        public static SKBitmap tr_52 {
             get {
-                object obj = ResourceManager.GetObject("tr_52", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_52");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_53 {
+        public static SKBitmap tr_53 {
             get {
-                object obj = ResourceManager.GetObject("tr_53", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_53");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_54 {
+        public static SKBitmap tr_54 {
             get {
-                object obj = ResourceManager.GetObject("tr_54", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_54");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_55 {
+        public static SKBitmap tr_55 {
             get {
-                object obj = ResourceManager.GetObject("tr_55", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_55");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_56 {
+        public static SKBitmap tr_56 {
             get {
-                object obj = ResourceManager.GetObject("tr_56", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_56");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_57 {
+        public static SKBitmap tr_57 {
             get {
-                object obj = ResourceManager.GetObject("tr_57", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_57");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_58 {
+        public static SKBitmap tr_58 {
             get {
-                object obj = ResourceManager.GetObject("tr_58", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_58");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_59 {
+        public static SKBitmap tr_59 {
             get {
-                object obj = ResourceManager.GetObject("tr_59", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_59");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_60 {
+        public static SKBitmap tr_60 {
             get {
-                object obj = ResourceManager.GetObject("tr_60", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_60");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_61 {
+        public static SKBitmap tr_61 {
             get {
-                object obj = ResourceManager.GetObject("tr_61", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_61");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_62 {
+        public static SKBitmap tr_62 {
             get {
-                object obj = ResourceManager.GetObject("tr_62", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_62");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_63 {
+        public static SKBitmap tr_63 {
             get {
-                object obj = ResourceManager.GetObject("tr_63", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_63");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_64 {
+        public static SKBitmap tr_64 {
             get {
-                object obj = ResourceManager.GetObject("tr_64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_64");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_65 {
+        public static SKBitmap tr_65 {
             get {
-                object obj = ResourceManager.GetObject("tr_65", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_65");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_66 {
+        public static SKBitmap tr_66 {
             get {
-                object obj = ResourceManager.GetObject("tr_66", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_66");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_67 {
+        public static SKBitmap tr_67 {
             get {
-                object obj = ResourceManager.GetObject("tr_67", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_67");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_68 {
+        public static SKBitmap tr_68 {
             get {
-                object obj = ResourceManager.GetObject("tr_68", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_68");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_69 {
+        public static SKBitmap tr_69 {
             get {
-                object obj = ResourceManager.GetObject("tr_69", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_69");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_70 {
+        public static SKBitmap tr_70 {
             get {
-                object obj = ResourceManager.GetObject("tr_70", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_70");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_71 {
+        public static SKBitmap tr_71 {
             get {
-                object obj = ResourceManager.GetObject("tr_71", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_71");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_72 {
+        public static SKBitmap tr_72 {
             get {
-                object obj = ResourceManager.GetObject("tr_72", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_72");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tr_73 {
+        public static SKBitmap tr_73 {
             get {
-                object obj = ResourceManager.GetObject("tr_73", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("tr_73");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_00 {
+        public static SKBitmap type_icon_00 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_01 {
+        public static SKBitmap type_icon_01 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_02 {
+        public static SKBitmap type_icon_02 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_03 {
+        public static SKBitmap type_icon_03 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_04 {
+        public static SKBitmap type_icon_04 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_05 {
+        public static SKBitmap type_icon_05 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_06 {
+        public static SKBitmap type_icon_06 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_06", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_06");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_07 {
+        public static SKBitmap type_icon_07 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_07", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_07");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_08 {
+        public static SKBitmap type_icon_08 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_08", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_08");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_09 {
+        public static SKBitmap type_icon_09 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_09", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_09");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_10 {
+        public static SKBitmap type_icon_10 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_10", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_10");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_11 {
+        public static SKBitmap type_icon_11 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_11");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_12 {
+        public static SKBitmap type_icon_12 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_12", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_12");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_13 {
+        public static SKBitmap type_icon_13 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_13", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_13");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_14 {
+        public static SKBitmap type_icon_14 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_14", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_14");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_15 {
+        public static SKBitmap type_icon_15 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_15", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_15");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_16 {
+        public static SKBitmap type_icon_16 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_16");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_17 {
+        public static SKBitmap type_icon_17 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_17", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_17");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_99 {
+        public static SKBitmap type_icon_99 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_99", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_99");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_00 {
+        public static SKBitmap type_icon_s_00 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_01 {
+        public static SKBitmap type_icon_s_01 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_02 {
+        public static SKBitmap type_icon_s_02 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_03 {
+        public static SKBitmap type_icon_s_03 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_04 {
+        public static SKBitmap type_icon_s_04 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_05 {
+        public static SKBitmap type_icon_s_05 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_06 {
+        public static SKBitmap type_icon_s_06 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_06", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_06");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_07 {
+        public static SKBitmap type_icon_s_07 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_07", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_07");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_08 {
+        public static SKBitmap type_icon_s_08 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_08", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_08");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_09 {
+        public static SKBitmap type_icon_s_09 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_09", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_09");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_10 {
+        public static SKBitmap type_icon_s_10 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_10", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_10");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_11 {
+        public static SKBitmap type_icon_s_11 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_11");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_12 {
+        public static SKBitmap type_icon_s_12 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_12", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_12");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_13 {
+        public static SKBitmap type_icon_s_13 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_13", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_13");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_14 {
+        public static SKBitmap type_icon_s_14 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_14", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_14");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_15 {
+        public static SKBitmap type_icon_s_15 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_15", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_15");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_16 {
+        public static SKBitmap type_icon_s_16 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_16");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_17 {
+        public static SKBitmap type_icon_s_17 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_17", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_17");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_icon_s_99 {
+        public static SKBitmap type_icon_s_99 {
             get {
-                object obj = ResourceManager.GetObject("type_icon_s_99", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_icon_s_99");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_00 {
+        public static SKBitmap type_wide_00 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_00");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_01 {
+        public static SKBitmap type_wide_01 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_01");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_02 {
+        public static SKBitmap type_wide_02 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_02", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_02");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_03 {
+        public static SKBitmap type_wide_03 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_03");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_04 {
+        public static SKBitmap type_wide_04 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_04");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_05 {
+        public static SKBitmap type_wide_05 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_05");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_06 {
+        public static SKBitmap type_wide_06 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_06", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_06");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_07 {
+        public static SKBitmap type_wide_07 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_07", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_07");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_08 {
+        public static SKBitmap type_wide_08 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_08", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_08");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_09 {
+        public static SKBitmap type_wide_09 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_09", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_09");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_10 {
+        public static SKBitmap type_wide_10 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_10", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_10");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_11 {
+        public static SKBitmap type_wide_11 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_11");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_12 {
+        public static SKBitmap type_wide_12 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_12", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_12");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_13 {
+        public static SKBitmap type_wide_13 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_13", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_13");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_14 {
+        public static SKBitmap type_wide_14 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_14", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_14");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_15 {
+        public static SKBitmap type_wide_15 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_15", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_15");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_16 {
+        public static SKBitmap type_wide_16 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_16");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_17 {
+        public static SKBitmap type_wide_17 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_17", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_17");
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type SKBitmap.
         /// </summary>
-        public static System.Drawing.Bitmap type_wide_99 {
+        public static SKBitmap type_wide_99 {
             get {
-                object obj = ResourceManager.GetObject("type_wide_99", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return GetCachedBitmap("type_wide_99");
             }
         }
     }

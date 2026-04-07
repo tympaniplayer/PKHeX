@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using PKHeX.Core;
 using PKHeX.Drawing.Misc;
+using SkiaSharp;
 using static PKHeX.Core.MessageStrings;
 
 namespace PKHeX.WinForms;
@@ -10,13 +11,13 @@ namespace PKHeX.WinForms;
 public partial class QR : Form
 {
     private readonly PKM? Entity;
-    private readonly Image icon;
-    private Bitmap qr;
+    private readonly SKBitmap icon;
+    private SKBitmap qr;
 
     private readonly string[] Lines;
     private string extraText = string.Empty;
 
-    public QR(Bitmap qr, Image icon, params string[] lines)
+    public QR(SKBitmap qr, SKBitmap icon, params string[] lines)
     {
         InitializeComponent();
         WinFormsUtil.TranslateInterface(this, Main.CurrentLanguage);
@@ -28,7 +29,7 @@ public partial class QR : Form
         ResizeWindow();
     }
 
-    public QR(Bitmap qr, Image icon, PKM pk, params string[] lines)
+    public QR(SKBitmap qr, SKBitmap icon, PKM pk, params string[] lines)
     {
         InitializeComponent();
         WinFormsUtil.TranslateInterface(this, Main.CurrentLanguage);
@@ -58,7 +59,7 @@ public partial class QR : Form
         Width += img.Width - p2.Width;
     }
 
-    private Bitmap ReloadQRData(PK7 pk7)
+    private SKBitmap ReloadQRData(PK7 pk7)
     {
         var box = (int)NUD_Box.Value - 1;
         var slot = (int)NUD_Slot.Value - 1;
@@ -75,8 +76,8 @@ public partial class QR : Form
 
         var width = Math.Max(qr.Width, 370);
         var height = qr.Height + 50;
-        var img = QRImageUtil.GetQRImageExtended(font, qr, icon, width, height, Lines, extraText);
-        PB_QR.Image = img;
+        var img = QRImageUtil.GetQRImageExtended(font.Size, qr, icon, width, height, Lines, extraText);
+        PB_QR.Image = img.ToBitmap();
     }
 
     private void PB_QR_Click(object sender, EventArgs e)

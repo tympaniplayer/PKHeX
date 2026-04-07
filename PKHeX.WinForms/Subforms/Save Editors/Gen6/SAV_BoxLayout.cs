@@ -197,7 +197,7 @@ public partial class SAV_BoxLayout : Form
                 wp.SetBoxWallpaper(LB_BoxSelect.SelectedIndex, CB_BG.SelectedIndex);
         }
 
-        PAN_BG.BackgroundImage = SAV.WallpaperImage(LB_BoxSelect.SelectedIndex);
+        PAN_BG.BackgroundImage = SAV.WallpaperImage(LB_BoxSelect.SelectedIndex).ToBitmap();
     }
 
     private bool MoveItem(int direction)

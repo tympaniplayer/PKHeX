@@ -195,7 +195,7 @@ public partial class SAV_Database : Form
         PKME_Tabs.PopulateFields(pk, false);
 
         slotSelected = index;
-        slotColor = SpriteUtil.Spriter.View;
+        slotColor = SpriteUtil.Spriter.View.ToBitmap();
         FillPKXBoxes(SCR_Box.Value);
         L_Viewed.Text = string.Format(Viewed, slot.Identify());
     }
@@ -274,7 +274,7 @@ public partial class SAV_Database : Form
         // Refresh database view.
         L_Count.Text = string.Format(Counter, Results.Count);
         slotSelected = Results.Count - 1;
-        slotColor = SpriteUtil.Spriter.Set;
+        slotColor = SpriteUtil.Spriter.Set.ToBitmap();
         if ((SCR_Box.Maximum + 1) * GridWidth < Results.Count)
             SCR_Box.Maximum++;
         SCR_Box.Value = Math.Max(0, SCR_Box.Maximum - (PKXBOXES.Length / GridWidth) + 1);
@@ -584,15 +584,15 @@ public partial class SAV_Database : Form
         {
             var slot = Results[i + begin];
             var pk = Results[i + begin].Entity;
-            PKXBOXES[i].Image = pk.Sprite(SAV, visibility: GetFlags(pk), storage: slot.Source.Type);
+            PKXBOXES[i].Image = pk.Sprite(SAV, visibility: GetFlags(pk), storage: slot.Source.Type).ToBitmap();
         }
         for (int i = end; i < RES_MAX; i++)
             PKXBOXES[i].Image = null;
 
         for (int i = 0; i < RES_MAX; i++)
-            PKXBOXES[i].BackgroundImage = SpriteUtil.Spriter.Transparent;
+            PKXBOXES[i].BackgroundImage = SpriteUtil.Spriter.Transparent.ToBitmap();
         if (slotSelected != -1 && slotSelected >= begin && slotSelected < begin + RES_MAX)
-            PKXBOXES[slotSelected - begin].BackgroundImage = slotColor ?? SpriteUtil.Spriter.View;
+            PKXBOXES[slotSelected - begin].BackgroundImage = slotColor ?? SpriteUtil.Spriter.View.ToBitmap();
     }
 
     private SlotVisibilityType GetFlags(PKM pk, bool ignoreLegality = false)

@@ -16,6 +16,7 @@ using PKHeX.Drawing;
 using PKHeX.Drawing.Misc;
 using PKHeX.Drawing.PokeSprite;
 using PKHeX.WinForms.Controls;
+using SkiaSharp;
 using static PKHeX.Core.MessageStrings;
 
 namespace PKHeX.WinForms;
@@ -1057,8 +1058,9 @@ public partial class Main : Form
 
         var qr = QREncode.GenerateQRCode(pk);
 
-        if (dragout.Image is not Bitmap sprite)
+        if (dragout.Image is not Bitmap bmpSprite)
             return;
+        var sprite = bmpSprite.ToSKBitmap();
         var la = new LegalityAnalysis(pk, C_SAV.SAV.Personal);
         if (la.Parsed && pk.Species != 0)
         {
@@ -1161,10 +1163,10 @@ public partial class Main : Form
             var avg = img.GetAverageColor();
             var c = Color.FromArgb(avg);
             SpriteUtil.GetSpriteGlow(img, c.B, c.G, c.R, out var pixels, true);
-            var layer = ImageUtil.GetBitmap(pixels, img.Width, img.Height, img.PixelFormat);
+            var layer = ImageUtil.GetBitmap(pixels, img.Width, img.Height);
             img = ImageUtil.LayerImage(img, layer, 0, 0);
         }
-        pb.Image = img;
+        pb.Image = img.ToBitmap();
         if (pb.BackColor == SlotUtil.BadDataColor)
             pb.BackColor = SlotUtil.GoodDataColor;
     }
@@ -1181,7 +1183,7 @@ public partial class Main : Form
 
         PB_Legal.Visible = true;
         bool isValid = (sender as bool?) != false;
-        PB_Legal.Image = SpriteUtil.GetLegalIndicator(isValid);
+        PB_Legal.Image = SpriteUtil.GetLegalIndicator(isValid).ToBitmap();
         toolTip.SetToolTip(PB_Legal, isValid ? MsgLegalityHoverValid : MsgLegalityHoverInvalid);
     }
 
@@ -1282,14 +1284,14 @@ public partial class Main : Form
 
     private void DragoutEnter(object sender, EventArgs e)
     {
-        dragout.BackgroundImage = PKME_Tabs.Entity.Species > 0 ? SpriteUtil.Spriter.Set : SpriteUtil.Spriter.Delete;
+        dragout.BackgroundImage = (PKME_Tabs.Entity.Species > 0 ? SpriteUtil.Spriter.Set : SpriteUtil.Spriter.Delete).ToBitmap();
         if (!mainDragOutActive)
             Cursor = Cursors.Hand;
     }
 
     private void DragoutLeave(object sender, EventArgs e)
     {
-        dragout.BackgroundImage = SpriteUtil.Spriter.Transparent;
+        dragout.BackgroundImage = SpriteUtil.Spriter.Transparent.ToBitmap();
         if (!mainDragOutActive && Cursor == Cursors.Hand)
             Cursor = Cursors.Default;
     }

@@ -80,7 +80,7 @@ public partial class StatusBrowser : Form
             : value.GetStatusSprite();
         var pb = new SelectablePictureBox
         {
-            Image = img,
+            Image = img.ToImage(),
             Name = name,
             AccessibleDescription = name,
             AccessibleName = name,

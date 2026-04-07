@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PKHeX.Core;
 using PKHeX.Drawing.PokeSprite;
+using PKHeX.WinForms;
 
 namespace PKHeX.WinForms.Controls;
 
@@ -232,7 +233,7 @@ public sealed class SlotChangeManager(SAVEditor se) : IDisposable
         Drag.SetOwnedCursor(pb, img);
         Hover.Stop();
         pb.Image = null;
-        pb.BackgroundImage = SpriteUtil.Spriter.Drag;
+        pb.BackgroundImage = SpriteUtil.Spriter.Drag.ToBitmap();
 
         // Thread Blocks on DoDragDrop
         Drag.Info.CurrentPath = newfile;

@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using PKHeX.Core;
 using PKHeX.Drawing.Misc;
 using PKHeX.Drawing.PokeSprite;
+using PKHeX.WinForms;
 
 namespace PKHeX.WinForms.Controls;
 
@@ -119,7 +120,7 @@ public sealed partial class PokePreview : Form
                 name = $"{name} ({strings.types[type]}) [{pk.HPPower}]";
         }
 
-        var image = TypeSpriteUtil.GetTypeSpriteIconSmall(type);
+        var image = TypeSpriteUtil.GetTypeSpriteIconSmall(type).ToImage();
         var color = valid ? ForeColor : IllegalTextColor;
         MoveLines.Add(new RenderMoveLine(name, image, color));
     }
@@ -354,7 +355,7 @@ public sealed partial class PokePreview : Form
         var ball = (byte)Ball.Poke;
         if (pk.Format >= 3)
             ball = pk.Ball;
-        return SpriteUtil.GetBallSprite(ball);
+        return SpriteUtil.GetBallSprite(ball).ToBitmap();
     }
 
     private static Image? GetGenderImage(PKM pk)

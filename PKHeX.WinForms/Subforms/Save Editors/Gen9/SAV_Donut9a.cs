@@ -37,7 +37,7 @@ public partial class SAV_Donut9a : Form
 
         AddDrop(this, LB_Donut, DonutEditor);
 
-        DonutFlavorProfile.BackgroundImage = DonutSpriteUtil.GetFlavorProfileImage();
+        DonutFlavorProfile.BackgroundImage = DonutSpriteUtil.GetFlavorProfileImage().ToImage();
     }
 
     private void AddDrop(params ReadOnlySpan<Control> objects)

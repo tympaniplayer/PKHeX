@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using PKHeX.Drawing.PokeSprite;
+using PKHeX.WinForms;
 
 namespace PKHeX.WinForms.Controls;
 
@@ -74,7 +75,7 @@ public partial class PokeGrid : UserControl
     public void SetBackground(Bitmap img)
     {
         if (Application.IsDarkModeEnabled)
-            img = Drawing.ImageUtil.CopyChangeOpacity(img, 0.5);
+            img = Drawing.ImageUtil.CopyChangeOpacity(img.ToSKBitmap(), 0.5).ToBitmap();
         BackgroundImage = img;
     }
 

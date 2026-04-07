@@ -116,7 +116,7 @@ public partial class SAV_Wondercard : Form
     private void SetGiftBoxes()
     {
         for (int i = 0; i < Album.Length; i++)
-            pba[i].Image = Album[i].Sprite();
+            pba[i].Image = Album[i].Sprite().ToBitmap();
     }
 
     private void ViewGiftData(DataMysteryGift g)
@@ -132,7 +132,7 @@ public partial class SAV_Wondercard : Form
             }
 
             RTB.Lines = g.GetDescription().ToArray();
-            PB_Preview.Image = g.Sprite();
+            PB_Preview.Image = g.Sprite().ToBitmap();
             mg = g;
         }
         // Some user input mystery gifts can have out-of-bounds values. Just swallow any exception.
@@ -437,7 +437,7 @@ public partial class SAV_Wondercard : Form
 
         string desc = $"({mg.Type}) {string.Join(Environment.NewLine, mg.GetDescription())}";
 
-        using var form = new QR(qr, PB_Preview.Image!, desc + Environment.NewLine + "PKHeX Wonder Card @ ProjectPokemon.org");
+        using var form = new QR(qr, ((Bitmap)PB_Preview.Image!).ToSKBitmap(), desc + Environment.NewLine + "PKHeX Wonder Card @ ProjectPokemon.org");
         form.ShowDialog();
     }
 

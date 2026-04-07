@@ -65,15 +65,15 @@ public partial class KChart : Form
 
         var bst = p.BST;
         cells[c++].Value = species.ToString(SpeciesNumberFormat) + (form > 0 ? $"-{form:00}" : string.Empty);
-        cells[c++].Value = SpriteUtil.GetSprite(species, form, 0, 0, 0, false, Shiny.Never, SAV.Context);
+        cells[c++].Value = SpriteUtil.GetSprite(species, form, 0, 0, 0, false, Shiny.Never, SAV.Context).ToBitmap();
         cells[c++].Value = name;
         cells[c++].Value = GetIsNative(p, species);
-        cells[c].Style.BackColor = ColorUtil.ColorBaseStatTotal(bst);
+        cells[c].Style.BackColor = ColorUtil.ColorBaseStatTotal(bst).ToDrawingColor();
         cells[c].Style.ForeColor = Color.Black;
         cells[c++].Value = bst.ToString("000");
         cells[c++].Value = p.CatchRate.ToString("000");
-        cells[c++].Value = TypeSpriteUtil.GetTypeSpriteWide(p.Type1, SAV.Generation);
-        cells[c++].Value = p.Type1 == p.Type2 ? SpriteUtil.Spriter.Transparent : TypeSpriteUtil.GetTypeSpriteWide(p.Type2, SAV.Generation);
+        cells[c++].Value = TypeSpriteUtil.GetTypeSpriteWide(p.Type1, SAV.Generation).ToBitmap();
+        cells[c++].Value = p.Type1 == p.Type2 ? SpriteUtil.Spriter.Transparent.ToBitmap() : TypeSpriteUtil.GetTypeSpriteWide(p.Type2, SAV.Generation).ToBitmap();
         Stat(cells[c++], p.HP);
         Stat(cells[c++], p.ATK);
         Stat(cells[c++], p.DEF);
@@ -93,7 +93,7 @@ public partial class KChart : Form
         static void Stat(DataGridViewCell cell, int value)
         {
             cell.Style.ForeColor = Color.Black;
-            cell.Style.BackColor = ColorUtil.ColorBaseStat(value);
+            cell.Style.BackColor = ColorUtil.ColorBaseStat(value).ToDrawingColor();
             cell.Value = value.ToString("000");
         }
     }

@@ -1,5 +1,7 @@
 using System.Drawing;
 using System.Windows.Forms;
+using PKHeX.WinForms;
+using SkiaSharp;
 
 namespace PKHeX.WinForms.Controls;
 
@@ -17,7 +19,7 @@ internal class DoubleBufferedDataGridView : DataGridView
         {
             EnableHeadersVisualStyles = false;
             BorderStyle = BorderStyle.None;
-            RowsDefaultCellStyle = new DataGridViewCellStyle { BackColor = Drawing.ColorUtil.Blend(SystemColors.ControlLight, SystemColors.ControlLightLight, 0.45) };
+            RowsDefaultCellStyle = new DataGridViewCellStyle { BackColor = Drawing.ColorUtil.Blend(SystemColors.ControlLight.ToSKColor(), SystemColors.ControlLightLight.ToSKColor(), 0.45).ToDrawingColor() };
         }
 
         AlternatingRowsDefaultCellStyle = new DataGridViewCellStyle { BackColor = SystemColors.ControlLight };

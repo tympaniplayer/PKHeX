@@ -133,7 +133,7 @@ public partial class SAV_HallOfFame3 : Form
         var entry = Fame[LB_Entries.SelectedIndex].Team[(int)NUD_Members.Value];
         SaveEntry(entry);
         var shiny = entry.IsShiny ? Shiny.Always : Shiny.Never;
-        PB_Sprite.Image = SpriteUtil.GetSprite(entry.Species, entry.DisplayForm(SAV.Version), 0, 0, 0, false, shiny, EntityContext.Gen3);
+        PB_Sprite.Image = SpriteUtil.GetSprite(entry.Species, entry.DisplayForm(SAV.Version), 0, 0, 0, false, shiny, EntityContext.Gen3).ToBitmap();
     }
 
     private void B_Clear_Click(object sender, EventArgs e) => ClearFields();

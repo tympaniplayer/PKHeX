@@ -1,4 +1,4 @@
-using System.Drawing;
+using SkiaSharp;
 using PKHeX.Core;
 using PKHeX.Drawing.PokeSprite.Properties;
 
@@ -23,18 +23,18 @@ public sealed class SpriteBuilder5668c : SpriteBuilder
     protected override string GetSpriteAll(ushort species, byte form, byte gender, uint formarg, bool shiny, EntityContext context) => 'c' + SpriteName.GetResourceStringSprite(species, form, gender, formarg, context, shiny);
     protected override string GetSpriteAllSecondary(ushort species, byte form, byte gender, uint formarg, bool shiny, EntityContext context) => 'b' + SpriteName.GetResourceStringSprite(species, form, gender, formarg, context, shiny);
     protected override string GetItemResourceName(int item) => 'b' + $"item_{item}";
-    protected override Bitmap Unknown => Resources.b_unknown;
-    protected override Bitmap GetEggSprite(ushort species) => species == (int)Species.Manaphy ? Resources.b_490_e : Resources.b_egg;
+    protected override SKBitmap Unknown => Resources.b_unknown;
+    protected override SKBitmap GetEggSprite(ushort species) => species == (int)Species.Manaphy ? Resources.b_490_e : Resources.b_egg;
 
-    public override Bitmap Hover { get; } = Resources.slotHover68;
-    public override Bitmap View { get; } = Resources.slotView68;
-    public override Bitmap Set { get; } = Resources.slotSet68;
-    public override Bitmap Delete { get; } = Resources.slotDel68;
-    public override Bitmap Transparent { get; } = Resources.slotTrans68;
-    public override Bitmap Drag => Resources.slotDrag68;
-    public override Bitmap UnknownItem => Resources.bitem_unk;
-    public override Bitmap None { get; } = Resources.b_0;
-    public override Bitmap ItemTM => Resources.bitem_tm;
-    public override Bitmap ItemTR => Resources.bitem_tr;
-    public override Bitmap ShadowLugia => Resources.b_249x;
+    public override SKBitmap Hover { get; } = Resources.slotHover68;
+    public override SKBitmap View { get; } = Resources.slotView68;
+    public override SKBitmap Set { get; } = Resources.slotSet68;
+    public override SKBitmap Delete { get; } = Resources.slotDel68;
+    public override SKBitmap Transparent { get; } = Resources.slotTrans68;
+    public override SKBitmap Drag => Resources.slotDrag68;
+    public override SKBitmap UnknownItem => Resources.bitem_unk;
+    public override SKBitmap None { get; } = Resources.b_0;
+    public override SKBitmap ItemTM => Resources.bitem_tm;
+    public override SKBitmap ItemTR => Resources.bitem_tr;
+    public override SKBitmap ShadowLugia => Resources.b_249x;
 }

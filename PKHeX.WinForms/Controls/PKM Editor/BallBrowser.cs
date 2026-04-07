@@ -66,12 +66,12 @@ public partial class BallBrowser : Form
 
     private SelectablePictureBox GetBallView(byte ballID, string name, bool valid)
     {
-        var img = SpriteUtil.GetBallSprite(ballID);
+        var img = SpriteUtil.GetBallSprite(ballID).ToBitmap();
         var pb = new SelectablePictureBox
         {
             Size = img.Size,
             Image = img,
-            BackgroundImage = valid ? SpriteUtil.Spriter.Set : SpriteUtil.Spriter.Delete,
+            BackgroundImage = (valid ? SpriteUtil.Spriter.Set : SpriteUtil.Spriter.Delete).ToBitmap(),
             BackgroundImageLayout = ImageLayout.Tile,
             Name = name,
             AccessibleDescription = name,

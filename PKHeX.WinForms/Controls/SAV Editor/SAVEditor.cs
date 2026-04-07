@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PKHeX.Core;
 using PKHeX.Drawing;
+using PKHeX.WinForms;
 using static PKHeX.Core.MessageStrings;
 
 namespace PKHeX.WinForms.Controls;
@@ -316,7 +317,7 @@ public partial class SAVEditor : UserControl, ISlotViewer<PictureBox>, ISaveFile
                 L_SlotOccupied[i].Text = $"{i + 1}: ✘";
                 var pb = UpdateSlot(i);
                 if (pb.Image is Bitmap current)
-                    pb.Image = ImageUtil.CopyChangeOpacity(current, 0.6);
+                    pb.Image = ImageUtil.CopyChangeOpacity(current.ToSKBitmap(), 0.6).ToBitmap();
             }
         }
 

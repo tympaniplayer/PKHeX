@@ -560,11 +560,12 @@ public sealed partial class PKMEditor : UserControl, IMainEditor
             var bmp = pb.InitialImage as Bitmap;
             ArgumentNullException.ThrowIfNull(bmp);
 
+            var skBmp = bmp.ToSKBitmap();
             if (color.ToArgb() != Color.Black.ToArgb())
-                bmp = ImageUtil.CopyChangeAllColorTo(bmp, color);
+                skBmp = ImageUtil.CopyChangeAllColorTo(skBmp, color.ToSKColor());
             if (!active)
-                bmp = ImageUtil.CopyChangeOpacity(bmp, 1/8f);
-            pb.Image = bmp;
+                skBmp = ImageUtil.CopyChangeOpacity(skBmp, 1/8f);
+            pb.Image = skBmp.ToBitmap();
         }
     }
 
@@ -952,7 +953,7 @@ public sealed partial class PKMEditor : UserControl, IMainEditor
 
     private void UpdateBall(object sender, EventArgs e)
     {
-        PB_Ball.Image = SpriteUtil.GetBallSprite((byte)WinFormsUtil.GetIndex(CB_Ball));
+        PB_Ball.Image = SpriteUtil.GetBallSprite((byte)WinFormsUtil.GetIndex(CB_Ball)).ToBitmap();
     }
 
     private void UpdateEXPLevel(object sender, EventArgs e)
@@ -1823,7 +1824,7 @@ public sealed partial class PKMEditor : UserControl, IMainEditor
         var textColor = highlight && !Application.IsDarkModeEnabled ? SystemColors.HighlightText : SystemColors.ControlText;
 
         var type = MoveInfo.GetType((ushort)value, Entity.Context);
-        var moveTypeIcon = TypeSpriteUtil.GetTypeSpriteIconSmall(type);
+        var moveTypeIcon = TypeSpriteUtil.GetTypeSpriteIconSmall(type)?.ToBitmap();
         DrawMoveRectangle(e, brush, text, textColor, moveTypeIcon);
     }
 
@@ -1900,7 +1901,7 @@ public sealed partial class PKMEditor : UserControl, IMainEditor
             var affixed = a.AffixedRibbon;
             if (affixed != AffixedRibbon.None)
             {
-                PB_Affixed.Image = RibbonSpriteUtil.GetRibbonSprite((RibbonIndex)affixed);
+                PB_Affixed.Image = RibbonSpriteUtil.GetRibbonSprite((RibbonIndex)affixed).ToImage();
                 PB_Affixed.Visible = true;
                 // Update the tooltip with the ribbon name.
                 var name = GameInfo.Strings.Ribbons.GetNameSafe($"Ribbon{(RibbonIndex)affixed}", out var result) ? result : affixed.ToString();
@@ -2212,7 +2213,7 @@ public sealed partial class PKMEditor : UserControl, IMainEditor
         var bmp = p.InitialImage as Bitmap;
         ArgumentNullException.ThrowIfNull(bmp);
         if (!opaque)
-            bmp = ImageUtil.CopyChangeOpacity(bmp, trans);
+            return ImageUtil.CopyChangeOpacity(bmp.ToSKBitmap(), trans).ToBitmap();
         return bmp;
     }
 

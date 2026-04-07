@@ -700,7 +700,7 @@ public partial class SAV_Misc3 : Form
 
         PaintingIndex = index;
 
-        NUD_Painting.BackColor = ContestColor.GetColor(index);
+        NUD_Painting.BackColor = ContestColor.GetColor(index).ToDrawingColor();
     }
 
     private void SavePainting(int index)

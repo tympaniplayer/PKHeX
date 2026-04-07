@@ -45,7 +45,7 @@ public partial class StatusConditionView : UserControl
 
     private void SetFaint()
     {
-        PB_Status.Image = Drawing.PokeSprite.Properties.Resources.sickfaint;
+        PB_Status.Image = Drawing.PokeSprite.Properties.Resources.sickfaint.ToBitmap();
         Hover.RemoveAll();
     }
 
@@ -60,7 +60,7 @@ public partial class StatusConditionView : UserControl
         if (generation <= 4)
         {
             StatusCondition status = (StatusCondition)(value & 0xFF);
-            PB_Status.Image = status.GetStatusSprite();
+            PB_Status.Image = status.GetStatusSprite().ToImage();
 
             var text = WinFormsTranslator.TranslateEnum(status, Main.CurrentLanguage);
             Hover.SetToolTip(PB_Status, $"Status Condition: {text}");
@@ -68,7 +68,7 @@ public partial class StatusConditionView : UserControl
         else
         {
             StatusType status = (StatusType)(value & 0xFF);
-            PB_Status.Image = status.GetStatusSprite();
+            PB_Status.Image = status.GetStatusSprite().ToImage();
 
             var text = WinFormsTranslator.TranslateEnum(status, Main.CurrentLanguage);
             Hover.SetToolTip(PB_Status, $"Status Condition: {text}");

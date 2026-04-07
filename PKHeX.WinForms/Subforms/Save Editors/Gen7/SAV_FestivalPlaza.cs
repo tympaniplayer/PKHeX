@@ -323,7 +323,7 @@ public partial class SAV_FestivalPlaza : Form
     private void LoadPictureBox()
     {
         for (int i = 0; i < 3; i++)
-            PBs[i].Image = p[i].Sprite(SAV, visibility: GetFlags(p[i]));
+            PBs[i].Image = p[i].Sprite(SAV, visibility: GetFlags(p[i])).ToBitmap();
     }
 
     private SlotVisibilityType GetFlags(PKM pk, bool ignoreLegality = false)

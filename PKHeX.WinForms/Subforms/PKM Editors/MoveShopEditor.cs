@@ -158,7 +158,7 @@ public partial class MoveShopEditor : Form
             }
             row.Cells[ColumnIndex].Value = $"{i + Bias:00}";
             row.Cells[ColumnType].Value = type.ToString("00") + (isValid ? 0 : 1) + names[move]; // type -> valid -> name sorting
-            row.Cells[ColumnTypeIcon].Value = TypeSpriteUtil.GetTypeSpriteIconSmall(type);
+            row.Cells[ColumnTypeIcon].Value = TypeSpriteUtil.GetTypeSpriteIconSmall(type).ToImage();
             row.Cells[ColumnName].Value = names[indexes[i]];
         }
     }

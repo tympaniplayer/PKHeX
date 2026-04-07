@@ -84,12 +84,12 @@ public partial class PokedexResearchTask8aPanel : UserControl
         if (currentValue >= Task.TaskThresholds[thresholdIndex])
         {
             if (belowReported)
-                return ColorUtil.Blend(Color.Green, SystemColors.Window, 0.4);
-            return ColorUtil.Blend(Color.YellowGreen, SystemColors.Window, 0.4);
+                return ColorUtil.Blend(Color.Green.ToSKColor(), SystemColors.Window.ToSKColor(), 0.4).ToDrawingColor();
+            return ColorUtil.Blend(Color.YellowGreen.ToSKColor(), SystemColors.Window.ToSKColor(), 0.4).ToDrawingColor();
         }
 
         if (belowReported)
-            return ColorUtil.Blend(Color.Red, SystemColors.Window, 0.4);
+            return ColorUtil.Blend(Color.Red.ToSKColor(), SystemColors.Window.ToSKColor(), 0.4).ToDrawingColor();
         return SystemColors.Window;
     }
 

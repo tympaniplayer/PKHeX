@@ -1,4 +1,4 @@
-using System.Drawing;
+using SkiaSharp;
 using PKHeX.Core;
 using PKHeX.Drawing.Misc.Properties;
 using PKHeX.Drawing.PokeSprite;
@@ -13,11 +13,9 @@ public static class MysteryGiftSpriteUtil
     /// <summary>
     /// Gets the sprite image for the specified <see cref="MysteryGift"/>.
     /// </summary>
-    /// <param name="gift">The mystery gift to get the sprite for.</param>
-    /// <returns>A <see cref="Bitmap"/> representing the sprite image.</returns>
-    public static Bitmap Sprite(this MysteryGift gift) => GetSprite(gift);
+    public static SKBitmap Sprite(this MysteryGift gift) => GetSprite(gift);
 
-    private static Bitmap GetSprite(MysteryGift gift)
+    private static SKBitmap GetSprite(MysteryGift gift)
     {
         if (gift.IsEmpty)
             return SpriteUtil.Spriter.None;
@@ -30,7 +28,7 @@ public static class MysteryGiftSpriteUtil
         return img;
     }
 
-    private static Bitmap GetBaseImage(MysteryGift gift)
+    private static SKBitmap GetBaseImage(MysteryGift gift)
     {
         if (gift is { IsEgg: true, Species: (int)Species.Manaphy }) // Manaphy Egg
             return SpriteUtil.GetMysteryGiftPreviewPoke(gift);

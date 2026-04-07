@@ -157,7 +157,7 @@ public partial class RibbonEditor : Form
             AccessibleDescription = name,
             AccessibleRole = AccessibleRole.Graphic,
         };
-        var img = RibbonSpriteUtil.GetRibbonSprite(name);
+        var img = RibbonSpriteUtil.GetRibbonSprite(name).ToImage();
         pb.BackgroundImage = img;
 
         var display = RibbonStrings.GetName(name);
@@ -216,7 +216,7 @@ public partial class RibbonEditor : Form
             var max = rib.MaxCount;
             if (max == 8 && rib.Name is nameof(IRibbonSetMemory6.RibbonCountMemoryBattle) && Entity.Format >= 9)
                 max = 7;
-            pb.BackgroundImage = RibbonSpriteUtil.GetRibbonSprite(rib.Name, max, (int)nud.Value);
+            pb.BackgroundImage = RibbonSpriteUtil.GetRibbonSprite(rib.Name, max, (int)nud.Value).ToImage();
 
             ToggleNewRibbon(rib, pb);
         };

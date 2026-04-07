@@ -2,7 +2,7 @@ using PKHeX.Core;
 using PKHeX.Drawing;
 using System;
 using System.Drawing;
-using System.Drawing.Imaging;
+
 using System.Linq;
 using System.Windows.Forms;
 using static PKHeX.Core.SaveBlockAccessor9ZA;
@@ -64,7 +64,7 @@ public sealed partial class SAV_Trainer9a : Form
                 return null;
             var data = blocks.GetBlock(kd).Data;
             var result = DXT1.Decompress(data, (int)width, (int)height);
-            return ImageUtil.GetBitmap(result, (int)width, (int)height, PixelFormat.Format32bppArgb);
+            return ImageUtil.GetBitmap(result, (int)width, (int)height).ToBitmap();
         }
 
         static bool SetImage(PictureBox pb, Image? img)

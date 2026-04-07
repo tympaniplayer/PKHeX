@@ -255,7 +255,7 @@ public partial class SAV_BattlePass : Form
 
         groupSelected = CurrentPassIndex;
         slotSelected = index;
-        Box.Entries[index].BackgroundImage = SpriteUtil.Spriter.View;
+        Box.Entries[index].BackgroundImage = SpriteUtil.Spriter.View.ToBitmap();
     }
 
     private void ClickSet(object sender, EventArgs e)
@@ -445,16 +445,16 @@ public partial class SAV_BattlePass : Form
             var pb = Box.Entries[i];
             if (!pdata.GetPartySlotPresent(i))
             {
-                pb.Image = SpriteUtil.Spriter.None;
+                pb.Image = SpriteUtil.Spriter.None.ToBitmap();
                 continue;
             }
 
             var pk = pdata.GetPartySlotAtIndex(i);
-            pb.Image = pk.Sprite(SAV, visibility: GetFlags(pk));
+            pb.Image = pk.Sprite(SAV, visibility: GetFlags(pk)).ToBitmap();
         }
 
         if (slotSelected != -1 && (uint)slotSelected < Box.Entries.Count)
-            Box.Entries[slotSelected].BackgroundImage = groupSelected != CurrentPassIndex ? null : SpriteUtil.Spriter.View;
+            Box.Entries[slotSelected].BackgroundImage = groupSelected != CurrentPassIndex ? null : SpriteUtil.Spriter.View.ToBitmap();
 
         loading = false;
     }

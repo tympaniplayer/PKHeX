@@ -152,7 +152,7 @@ public partial class SAV_HallOfFame1 : Form
     }
 
     private static Bitmap GetSprite(ushort species)
-        => SpriteUtil.GetSprite(species, 0, 0, 0, 0, false, 0, EntityContext.Gen1);
+        => SpriteUtil.GetSprite(species, 0, 0, 0, 0, false, 0, EntityContext.Gen1).ToBitmap();
 
     private bool IsNicknamed(ushort species, string nickname)
     {

@@ -160,7 +160,7 @@ public partial class SAV_MysteryGiftDB : Form
         pk.RefreshChecksum();
         PKME_Tabs.PopulateFields(pk, false);
         slotSelected = index;
-        slotColor = SpriteUtil.Spriter.View;
+        slotColor = SpriteUtil.Spriter.View.ToBitmap();
         UpdateSlotColor(SCR_Box.Value);
         L_Viewed.Text = string.Format(Viewed, Results[index].FileName);
     }
@@ -408,7 +408,7 @@ public partial class SAV_MysteryGiftDB : Form
         int begin = start * RES_MIN;
         int end = Math.Min(RES_MAX, Results.Count - (start * RES_MIN));
         for (int i = 0; i < end; i++)
-            PKXBOXES[i].Image = Results[i + begin].Sprite();
+            PKXBOXES[i].Image = Results[i + begin].Sprite().ToBitmap();
         for (int i = end; i < RES_MAX; i++)
             PKXBOXES[i].Image = null;
         UpdateSlotColor(start);
@@ -417,9 +417,9 @@ public partial class SAV_MysteryGiftDB : Form
     private void UpdateSlotColor(int start)
     {
         for (int i = 0; i < RES_MAX; i++)
-            PKXBOXES[i].BackgroundImage = SpriteUtil.Spriter.Transparent;
+            PKXBOXES[i].BackgroundImage = SpriteUtil.Spriter.Transparent.ToBitmap();
         if (slotSelected != -1 && slotSelected >= RES_MIN * start && slotSelected < (RES_MIN * start) + RES_MAX)
-            PKXBOXES[slotSelected - (start * RES_MIN)].BackgroundImage = slotColor ?? SpriteUtil.Spriter.View;
+            PKXBOXES[slotSelected - (start * RES_MIN)].BackgroundImage = slotColor ?? SpriteUtil.Spriter.View.ToBitmap();
     }
 
     private void Menu_Import_Click(object sender, EventArgs e)

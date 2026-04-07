@@ -435,13 +435,13 @@ public partial class StatEditor : UserControl
             var s = MT_Base[index];
             s.Text = value.ToString("000");
             s.ForeColor = Color.Black;
-            s.BackColor = ColorUtil.ColorBaseStat(value);
+            s.BackColor = ColorUtil.ColorBaseStat(value).ToDrawingColor();
             bst += value;
         }
 
         TB_BST.Text = bst.ToString("000");
         TB_BST.ForeColor = Color.Black;
-        TB_BST.BackColor = ColorUtil.ColorBaseStatTotal(bst);
+        TB_BST.BackColor = ColorUtil.ColorBaseStatTotal(bst).ToDrawingColor();
     }
 
     public void UpdateRandomIVs(object sender, EventArgs e)
@@ -530,8 +530,8 @@ public partial class StatEditor : UserControl
         if (Application.IsDarkModeEnabled)
         {
             // Slightly whiten; regular color is too dark.
-            increase = ColorUtil.Blend(increase, SystemColors.ControlText, 0.60f);
-            decrease = ColorUtil.Blend(decrease, SystemColors.ControlText, 0.45f);
+            increase = ColorUtil.Blend(increase.ToSKColor(), SystemColors.ControlText.ToSKColor(), 0.60f).ToDrawingColor();
+            decrease = ColorUtil.Blend(decrease.ToSKColor(), SystemColors.ControlText.ToSKColor(), 0.45f).ToDrawingColor();
         }
 
         incr.ForeColor = increase;
@@ -886,7 +886,7 @@ public partial class StatEditor : UserControl
         var type = update;
         if (type == TeraOverrideNoneValue)
             type = original;
-        PB_TeraType.Image = TypeSpriteUtil.GetTypeSpriteGem(type);
+        PB_TeraType.Image = TypeSpriteUtil.GetTypeSpriteGem(type).ToImage();
         if (!ChangingFields)
             MainEditor.UpdateSprite();
     }
@@ -901,9 +901,9 @@ public sealed class TypePictureBox : PictureBox
 {
     private byte Type;
 
-    public void SetType(byte type, bool tera) => BackColor = tera
+    public void SetType(byte type, bool tera) => BackColor = (tera
         ? TypeColor.GetTeraSpriteColor(Type = type)
-        : TypeColor.GetTypeSpriteColor(Type = type);
+        : TypeColor.GetTypeSpriteColor(Type = type)).ToDrawingColor();
 
     private readonly ToolTip Tip = new() { InitialDelay = 500, ReshowDelay = 500, ShowAlways = true };
 

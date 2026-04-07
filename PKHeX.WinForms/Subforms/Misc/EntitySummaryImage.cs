@@ -11,6 +11,6 @@ namespace PKHeX.WinForms;
 [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties)]
 public sealed class EntitySummaryImage(PKM pk, GameStrings strings, string Position) : EntitySummary(pk, strings)
 {
-    public Image Sprite => Entity.Sprite();
+    public Image Sprite => Entity.Sprite().ToBitmap();
     public override string Position { get; } = Position;
 }

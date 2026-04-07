@@ -160,7 +160,7 @@ public partial class SAV_Trainer : Form
         // Load PSS Sprite
         if (SAV is IMultiplayerSprite ms)
             CB_MultiplayerSprite.SelectedValue = ms.MultiplayerSpriteID;
-        PB_Sprite.Image = SAV.Sprite();
+        PB_Sprite.Image = SAV.Sprite().ToImage();
 
         if (SAV is SAV6XY xy)
         {
@@ -353,7 +353,7 @@ public partial class SAV_Trainer : Form
 
         if (SAV is IMultiplayerSprite ms)
             ms.MultiplayerSpriteID = WinFormsUtil.GetIndex(CB_MultiplayerSprite);
-        PB_Sprite.Image = SAV.Sprite();
+        PB_Sprite.Image = SAV.Sprite().ToImage();
     }
 
     private string? UpdateTip(int index)
