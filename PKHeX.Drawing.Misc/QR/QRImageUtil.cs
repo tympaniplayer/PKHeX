@@ -47,16 +47,14 @@ public static class QRImageUtil
         canvas.Clear(SKColors.White);
         canvas.DrawBitmap(pic, 0, 0);
 
-        using var paint = new SKPaint();
-        paint.Color = SKColors.Black;
-        paint.TextSize = fontSize;
-        paint.IsAntialias = true;
+        using var font = new SKFont { Size = fontSize };
+        using var paint = new SKPaint { Color = SKColors.Black, IsAntialias = true };
 
         const int indent = 18;
-        canvas.DrawText(GetLine(lines, 0), indent, qr.Height - 5 + fontSize, paint);
-        canvas.DrawText(GetLine(lines, 1), indent, qr.Height + 8 + fontSize, paint);
-        canvas.DrawText(GetLine2(lines),   indent, qr.Height + 20 + fontSize, paint);
-        canvas.DrawText(GetLine(lines, 3) + extraText, indent, qr.Height + 32 + fontSize, paint);
+        canvas.DrawText(GetLine(lines, 0), indent, qr.Height - 5 + fontSize, SKTextAlign.Left, font, paint);
+        canvas.DrawText(GetLine(lines, 1), indent, qr.Height + 8 + fontSize, SKTextAlign.Left, font, paint);
+        canvas.DrawText(GetLine2(lines),   indent, qr.Height + 20 + fontSize, SKTextAlign.Left, font, paint);
+        canvas.DrawText(GetLine(lines, 3) + extraText, indent, qr.Height + 32 + fontSize, SKTextAlign.Left, font, paint);
         return newpic;
     }
 
