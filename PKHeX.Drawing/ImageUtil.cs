@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using SkiaSharp;
 
@@ -11,40 +12,28 @@ public static class ImageUtil
 {
     extension(SKBitmap bmp)
     {
-        public Span<byte> GetPixelSpan()
-        {
-            var pixels = bmp.GetPixelSpan();
-            // SKBitmap.GetPixelSpan() returns ReadOnlySpan, but we need mutable access.
-            // Use the direct pointer for mutable access.
-            var ptr = bmp.GetPixels();
-            var length = bmp.ByteCount;
-            return GetSpan(ptr, length);
-        }
-
         public void GetBitmapData(Span<byte> data)
         {
-            var span = bmp.GetPixelSpan();
+            var span = GetMutablePixels(bmp);
             span.CopyTo(data);
         }
 
         public void GetBitmapData(Span<int> data)
         {
-            var span = bmp.GetPixelSpan();
+            var span = GetMutablePixels(bmp);
             var src = MemoryMarshal.Cast<byte, int>(span);
             src.CopyTo(data);
         }
 
         public void SetBitmapData(ReadOnlySpan<byte> data)
         {
-            var ptr = bmp.GetPixels();
-            var dest = GetSpan(ptr, bmp.ByteCount);
+            var dest = GetMutablePixels(bmp);
             data.CopyTo(dest);
         }
 
         public void SetBitmapData(Span<int> data)
         {
-            var ptr = bmp.GetPixels();
-            var dest = MemoryMarshal.Cast<byte, int>(GetSpan(ptr, bmp.ByteCount));
+            var dest = MemoryMarshal.Cast<byte, int>(GetMutablePixels(bmp));
             data.CopyTo(dest);
         }
 
@@ -58,24 +47,24 @@ public static class ImageUtil
         public void ToGrayscale(float intensity)
         {
             if (intensity is <= 0.01f or > 1f)
-                return; // don't care
+                return;
 
-            var data = bmp.GetPixelSpan();
+            var data = GetMutablePixels(bmp);
             SetAllColorToGrayScale(data, intensity);
         }
 
         public void ChangeOpacity(double trans)
         {
             if (trans is <= 0.01f or > 1f)
-                return; // don't care
+                return;
 
-            var data = bmp.GetPixelSpan();
+            var data = GetMutablePixels(bmp);
             SetAllTransparencyTo(data, trans);
         }
 
         public void BlendTransparentTo(SKColor c, byte trans, int start = 0, int end = -1)
         {
-            var data = bmp.GetPixelSpan();
+            var data = GetMutablePixels(bmp);
             if (end == -1)
                 end = data.Length;
             BlendAllTransparencyTo(data[start..end], c, trans);
@@ -83,13 +72,13 @@ public static class ImageUtil
 
         public void ChangeAllColorTo(SKColor c)
         {
-            var data = bmp.GetPixelSpan();
+            var data = GetMutablePixels(bmp);
             ChangeAllColorTo(data, c);
         }
 
         public void ChangeTransparentTo(SKColor c, byte trans, int start = 0, int end = -1)
         {
-            var data = bmp.GetPixelSpan();
+            var data = GetMutablePixels(bmp);
             if (end == -1)
                 end = data.Length;
             SetAllTransparencyTo(data[start..end], c, trans);
@@ -97,28 +86,28 @@ public static class ImageUtil
 
         public void WritePixels(SKColor c, int start, int end)
         {
-            var data = bmp.GetPixelSpan();
+            var data = GetMutablePixels(bmp);
             ChangeAllTo(data, c, start, end);
         }
 
         public int GetAverageColor()
         {
-            var data = bmp.GetPixelSpan();
+            var data = GetMutablePixels(bmp);
             return GetAverageColor(data);
-        }
-
-        /// <summary>
-        /// Gets a mutable span of the bitmap's pixel data.
-        /// </summary>
-        private Span<byte> GetPixelSpan()
-        {
-            var ptr = bmp.GetPixels();
-            return GetSpan(ptr, bmp.ByteCount);
         }
     }
 
-    private static unsafe Span<byte> GetSpan(nint ptr, int length)
-        => new Span<byte>((void*)ptr, length);
+    /// <summary>
+    /// Gets a mutable <see cref="Span{T}"/> over the bitmap's pixel buffer.
+    /// </summary>
+    private static Span<byte> GetMutablePixels(SKBitmap bmp)
+    {
+        var ptr = bmp.GetPixels();
+        return CreateSpan(ptr, bmp.ByteCount);
+    }
+
+    private static Span<byte> CreateSpan(nint ptr, int length)
+        => MemoryMarshal.CreateSpan(ref Unsafe.AddByteOffset(ref Unsafe.NullRef<byte>(), ptr), length);
 
     public static SKBitmap LayerImage(SKBitmap baseLayer, SKBitmap overLayer, int x, int y, double transparency)
     {
@@ -166,8 +155,7 @@ public static class ImageUtil
     {
         var info = new SKImageInfo(width, height, SKColorType.Bgra8888, SKAlphaType.Unpremul);
         var bmp = new SKBitmap(info);
-        var ptr = bmp.GetPixels();
-        var dest = GetSpan(ptr, bmp.ByteCount);
+        var dest = GetMutablePixels(bmp);
         data[..length].CopyTo(dest);
         return bmp;
     }
@@ -213,7 +201,6 @@ public static class ImageUtil
     private static void SetAllTransparencyTo(Span<byte> data, SKColor c, byte trans)
     {
         var arr = MemoryMarshal.Cast<byte, int>(data);
-        // BGRA8888 pixel layout: B=0, G=1, R=2, A=3
         var value = (trans << 24) | (c.Red << 16) | (c.Green << 8) | c.Blue;
         for (int i = data.Length - 4; i >= 0; i -= 4)
         {
@@ -258,7 +245,6 @@ public static class ImageUtil
         return (0xFF << 24) | (R << 16) | (G << 8) | B;
     }
 
-    // heavily favor second (new) color
     private static int BlendColor(int color1, int color2, double amount = 0.2)
     {
         var a1 = (color1 >> 24) & 0xFF;
@@ -282,7 +268,6 @@ public static class ImageUtil
     private static void ChangeAllTo(Span<byte> data, SKColor c, int start, int end)
     {
         var arr = MemoryMarshal.Cast<byte, int>(data[start..end]);
-        // BGRA8888: B=byte0, G=byte1, R=byte2, A=byte3
         var value = (int)((uint)c.Alpha << 24 | (uint)c.Red << 16 | (uint)c.Green << 8 | c.Blue);
         arr.Fill(value);
     }
@@ -352,7 +337,6 @@ public static class ImageUtil
         int height = data.Length / stride;
         for (int i = data.Length - 4; i >= 0; i -= 4)
         {
-            // only pollute outwards if the current pixel is fully opaque
             if (data[i + 3] == 0)
                 continue;
 
@@ -367,8 +351,6 @@ public static class ImageUtil
                 {
                     for (int iy = top; iy <= bottom; iy++)
                     {
-                        // update one of the color bits
-                        // it is expected that a transparent pixel RGBA value is 0.
                         var c = 4 * (ix + (iy * width));
                         ref var b = ref data[c + PollutePixelColorIndex];
                         b += (byte)(amount * (0xFF - b));
@@ -382,11 +364,9 @@ public static class ImageUtil
     {
         for (int i = data.Length - 4; i >= 0; i -= 4)
         {
-            // only clean if the current pixel isn't transparent
             if (data[i + 3] != 0)
                 continue;
 
-            // grab the transparency from the donor byte
             var transparency = data[i + PollutePixelColorIndex];
             if (transparency == 0)
                 continue;
